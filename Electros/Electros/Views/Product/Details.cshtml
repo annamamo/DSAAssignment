@@ -1,0 +1,93 @@
+﻿@model Electros.Models.ProductModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+
+
+<fieldset>
+    <legend>ProductModel</legend>
+
+    @* <div class="display-label">Image</div>
+    <div class="display-field">
+       <img src="@Url.Content(String.Format("~/{0}", model.Image))"  width="100px" height="100px"/>
+     </div>*@
+
+     
+    <div class="display-field">
+        @Html.DisplayFor(model => model.myProduct.ID)
+      @*  @{var data = Model.myProduct.ID;}*@
+    </div>
+    
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.myProduct.Name)
+    </div>
+
+    <div class="display-label">Features</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.myProduct.Features)
+    </div>
+
+    <div class="display-label">StockAmount</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.myProduct.StockAmount)
+    </div>
+
+    <div class="display-label">Price</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.myProduct.Price)
+    </div>
+
+    <div class="display-label">CategoryID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.myProduct.CategoryID)
+    </div>
+
+    <div class="display-label">Image</div>
+    <div class="display-field">
+      <img src="@Url.Content(String.Format("~/{0}", Model.myProduct.Image))" width="100px" height="100px"/>
+     
+    </div>
+    <div class="display-label">Comments</div>
+    <div class="display-field">
+    
+   @foreach (var i in Model.myComment)
+   {
+       @Html.DisplayFor(model => i.Comment1) 
+   }
+    
+    </div>
+ @using (Html.BeginForm("AddToCart", "Product", FormMethod.Post))
+ {
+                    @Html.ValidationSummary(true)
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Qty)
+                        @Html.ValidationMessageFor(model => model.Qty)
+@*
+                     @ViewData["QtyAdded"]
+                     @ViewData["OutOfStock"]
+                        *@
+                    </div>
+                   <input type="submit"name="submitButton" value="Add to Cart" />
+                    
+                     <div>
+                @Html.HiddenFor(model => model.myProduct.ID)
+                   </div>
+ }
+
+   @* change later for textbox
+    <div class="display-label">Qty</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Qty)
+    </div>*@
+</fieldset>
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@
+

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Common.Product>
+
+
+@{
+    ViewBag.Title = "ProductList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ProductList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+           @*Image*@
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Stock
+        </th>
+        <th>
+            Price
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model)
+{
+    <div class="display-field">
+        @Html.HiddenFor(model => item.ID)
+    </div>
+    <tr>
+        <td>
+            <img src="@Url.Content(String.Format("~/{0}", item.Image))"  width="100px" height="100px"/>
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StockAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        
+                
+        <td>
+            
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) 
+           
+ </td>
+    </tr>
+    
+}
+
+</table>

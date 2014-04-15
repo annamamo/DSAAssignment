@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="29d6bb84-2361-4bfc-a3cc-ebc52e677fbd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:13866/FaultReportLogService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FaultReportLogService.xsd" MetadataType="Schema" ID="5d48ab9c-3237-41e7-94ff-2ac7df6152ed" SourceId="1" SourceUrl="http://localhost:13866/FaultReportLogService.svc?xsd=xsd1" />
+    <MetadataFile FileName="FaultReportLogService1.xsd" MetadataType="Schema" ID="8c7b0ae0-3c06-4622-8bb7-bf5661efd32f" SourceId="1" SourceUrl="http://localhost:13866/FaultReportLogService.svc?xsd=xsd0" />
+    <MetadataFile FileName="FaultReportLogService2.xsd" MetadataType="Schema" ID="1275a5d3-a872-415c-bad0-eb93b95ed57a" SourceId="1" SourceUrl="http://localhost:13866/FaultReportLogService.svc?xsd=xsd3" />
+    <MetadataFile FileName="FaultReportLogService3.xsd" MetadataType="Schema" ID="ffd8cae5-56d7-4a37-8001-4b2984434cef" SourceId="1" SourceUrl="http://localhost:13866/FaultReportLogService.svc?xsd=xsd2" />
+    <MetadataFile FileName="FaultReportLogService4.xsd" MetadataType="Schema" ID="76454ec4-a076-4aff-bb68-049a20088e52" SourceId="1" SourceUrl="http://localhost:13866/FaultReportLogService.svc?xsd=xsd4" />
+    <MetadataFile FileName="FaultReportLogService.disco" MetadataType="Disco" ID="0ee6e18d-7094-41f7-9f00-e01c42180987" SourceId="1" SourceUrl="http://localhost:13866/FaultReportLogService.svc?disco" />
+    <MetadataFile FileName="FaultReportLogService.wsdl" MetadataType="Wsdl" ID="e1dd50c3-5022-4046-a0e0-e317836f3379" SourceId="1" SourceUrl="http://localhost:13866/FaultReportLogService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

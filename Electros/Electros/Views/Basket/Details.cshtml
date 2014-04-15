@@ -1,0 +1,44 @@
+﻿@model Common.ProductOrder
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Features</th>
+        <th>Date of Purchase</th>
+        <th>Warranty Expiry Date</th>
+        <th>Quantity</th>
+       @* later add status of fault*@
+    </tr>
+
+
+    <tr>
+        <td><img src="@Url.Content(String.Format("~/{0}", Model.Product.Image))" width="100px" height="100px"/> </td>
+        <td>@Html.DisplayFor(modelItem => Model.Product.Name)</td>
+        <td>@Html.DisplayFor(modelItem => Model.Product.Features)</td>
+       
+        <td>@Html.DisplayFor(modelItem => Model.Order.DateOfPurchase)</td>
+        <td>@Html.DisplayFor(modelItem => Model.Order.WarrantyExpiryDate)</td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Quantity)
+        </td>
+      
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>*@
+    </tr>
+
+
+</table>

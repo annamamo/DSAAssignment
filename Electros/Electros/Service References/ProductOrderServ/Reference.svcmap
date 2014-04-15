@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2055fa05-9a41-4c1f-a535-48e27b3061d7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:13866/ProductOrder.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ProductOrder.disco" MetadataType="Disco" ID="6e98d5be-b951-4c77-9e2e-0cee799047b8" SourceId="1" SourceUrl="http://localhost:13866/ProductOrder.svc?disco" />
+    <MetadataFile FileName="ProductOrder.xsd" MetadataType="Schema" ID="41f4c36e-9a81-4c27-86ec-102f6026449d" SourceId="1" SourceUrl="http://localhost:13866/ProductOrder.svc?xsd=xsd0" />
+    <MetadataFile FileName="ProductOrder1.xsd" MetadataType="Schema" ID="beffd9db-08d2-4088-ad71-73bf3e17f2d8" SourceId="1" SourceUrl="http://localhost:13866/ProductOrder.svc?xsd=xsd2" />
+    <MetadataFile FileName="ProductOrder2.xsd" MetadataType="Schema" ID="fdfb3cbf-b2e1-49cf-914c-fc018de1a6a7" SourceId="1" SourceUrl="http://localhost:13866/ProductOrder.svc?xsd=xsd4" />
+    <MetadataFile FileName="ProductOrder3.xsd" MetadataType="Schema" ID="0be00a7d-2c85-42c6-a313-c9686bd04d2c" SourceId="1" SourceUrl="http://localhost:13866/ProductOrder.svc?xsd=xsd1" />
+    <MetadataFile FileName="ProductOrder4.xsd" MetadataType="Schema" ID="9395595d-a817-419f-a83c-9ee379d4c140" SourceId="1" SourceUrl="http://localhost:13866/ProductOrder.svc?xsd=xsd3" />
+    <MetadataFile FileName="ProductOrder.wsdl" MetadataType="Wsdl" ID="073b07e4-de08-4125-8f09-95b65336aa09" SourceId="1" SourceUrl="http://localhost:13866/ProductOrder.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

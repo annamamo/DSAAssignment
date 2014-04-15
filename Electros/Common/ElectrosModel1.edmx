@@ -1,0 +1,1075 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ElectrosDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ElectrosDBModelStoreContainer">
+          <EntitySet Name="Account" EntityType="ElectrosDBModel.Store.Account" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Category" EntityType="ElectrosDBModel.Store.Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Comment" EntityType="ElectrosDBModel.Store.Comment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Country" EntityType="ElectrosDBModel.Store.Country" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FaultLog" EntityType="ElectrosDBModel.Store.FaultLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FaultReport" EntityType="ElectrosDBModel.Store.FaultReport" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Order" EntityType="ElectrosDBModel.Store.Order" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Product" EntityType="ElectrosDBModel.Store.Product" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductOrder" EntityType="ElectrosDBModel.Store.ProductOrder" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Rating" EntityType="ElectrosDBModel.Store.Rating" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Role" EntityType="ElectrosDBModel.Store.Role" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="ElectrosDBModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Town" EntityType="ElectrosDBModel.Store.Town" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="ElectrosDBModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserRole" EntityType="ElectrosDBModel.Store.UserRole" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Comment_Account" Association="ElectrosDBModel.Store.FK_Comment_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Product" Association="ElectrosDBModel.Store.FK_Comment_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FaultLog_FaultReport" Association="ElectrosDBModel.Store.FK_FaultLog_FaultReport">
+            <End Role="FaultReport" EntitySet="FaultReport" />
+            <End Role="FaultLog" EntitySet="FaultLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FaultReport_Account" Association="ElectrosDBModel.Store.FK_FaultReport_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="FaultReport" EntitySet="FaultReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FaultReport_Product" Association="ElectrosDBModel.Store.FK_FaultReport_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="FaultReport" EntitySet="FaultReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Account" Association="ElectrosDBModel.Store.FK_Order_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="ElectrosDBModel.Store.FK_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductOrder_Order" Association="ElectrosDBModel.Store.FK_ProductOrder_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="ProductOrder" EntitySet="ProductOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductOrder_Product" Association="ElectrosDBModel.Store.FK_ProductOrder_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductOrder" EntitySet="ProductOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating_Account" Association="ElectrosDBModel.Store.FK_Rating_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating_Product" Association="ElectrosDBModel.Store.FK_Rating_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Town_Country" Association="ElectrosDBModel.Store.FK_Town_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Town" EntitySet="Town" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Account" Association="ElectrosDBModel.Store.FK_User_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Town" Association="ElectrosDBModel.Store.FK_User_Town">
+            <End Role="Town" EntitySet="Town" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_Account" Association="ElectrosDBModel.Store.FK_UserRole_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_Role" Association="ElectrosDBModel.Store.FK_UserRole_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="PIN" Type="int" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="AccountID" Type="int" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FaultLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DateReport" Type="date" />
+          <Property Name="FaultReportID" Type="int" />
+        </EntityType>
+        <EntityType Name="FaultReport">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TicketNum" Type="int" />
+          <Property Name="Barcode" Type="image" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="AccountID" Type="int" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DateOfPurchase" Type="date" />
+          <Property Name="WarrantyExpiryDate" Type="date" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountID" Type="int" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Features" Type="nvarchar(max)" />
+          <Property Name="StockAmount" Type="int" />
+          <Property Name="Price" Type="decimal" Scale="2" />
+          <Property Name="DateListed" Type="date" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="Image" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ProductOrder">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Rating" Type="int" />
+          <Property Name="AccountID" Type="int" />
+          <Property Name="ProductID" Type="int" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Town">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryID" Type="int" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="ResidanceName" Type="nvarchar" MaxLength="50" />
+          <Property Name="StreetName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="int" />
+          <Property Name="AccountID" Type="int" Nullable="false" />
+          <Property Name="TownID" Type="int" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="AccountID" />
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="AccountID" Type="int" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Comment_Account">
+          <End Role="Account" Type="ElectrosDBModel.Store.Account" Multiplicity="0..1" />
+          <End Role="Comment" Type="ElectrosDBModel.Store.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Product">
+          <End Role="Product" Type="ElectrosDBModel.Store.Product" Multiplicity="0..1" />
+          <End Role="Comment" Type="ElectrosDBModel.Store.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FaultLog_FaultReport">
+          <End Role="FaultReport" Type="ElectrosDBModel.Store.FaultReport" Multiplicity="0..1" />
+          <End Role="FaultLog" Type="ElectrosDBModel.Store.FaultLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FaultReport">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FaultLog">
+              <PropertyRef Name="FaultReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FaultReport_Account">
+          <End Role="Account" Type="ElectrosDBModel.Store.Account" Multiplicity="0..1" />
+          <End Role="FaultReport" Type="ElectrosDBModel.Store.FaultReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FaultReport">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FaultReport_Product">
+          <End Role="Product" Type="ElectrosDBModel.Store.Product" Multiplicity="0..1" />
+          <End Role="FaultReport" Type="ElectrosDBModel.Store.FaultReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FaultReport">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Account">
+          <End Role="Account" Type="ElectrosDBModel.Store.Account" Multiplicity="0..1" />
+          <End Role="Order" Type="ElectrosDBModel.Store.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Role="Category" Type="ElectrosDBModel.Store.Category" Multiplicity="0..1" />
+          <End Role="Product" Type="ElectrosDBModel.Store.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductOrder_Order">
+          <End Role="Order" Type="ElectrosDBModel.Store.Order" Multiplicity="1" />
+          <End Role="ProductOrder" Type="ElectrosDBModel.Store.ProductOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductOrder">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductOrder_Product">
+          <End Role="Product" Type="ElectrosDBModel.Store.Product" Multiplicity="1" />
+          <End Role="ProductOrder" Type="ElectrosDBModel.Store.ProductOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductOrder">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating_Account">
+          <End Role="Account" Type="ElectrosDBModel.Store.Account" Multiplicity="0..1" />
+          <End Role="Rating" Type="ElectrosDBModel.Store.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating_Product">
+          <End Role="Product" Type="ElectrosDBModel.Store.Product" Multiplicity="0..1" />
+          <End Role="Rating" Type="ElectrosDBModel.Store.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Town_Country">
+          <End Role="Country" Type="ElectrosDBModel.Store.Country" Multiplicity="0..1" />
+          <End Role="Town" Type="ElectrosDBModel.Store.Town" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Town">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Account">
+          <End Role="Account" Type="ElectrosDBModel.Store.Account" Multiplicity="1" />
+          <End Role="User" Type="ElectrosDBModel.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Town">
+          <End Role="Town" Type="ElectrosDBModel.Store.Town" Multiplicity="0..1" />
+          <End Role="User" Type="ElectrosDBModel.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Town">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="TownID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_Account">
+          <End Role="Account" Type="ElectrosDBModel.Store.Account" Multiplicity="1" />
+          <End Role="UserRole" Type="ElectrosDBModel.Store.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_Role">
+          <End Role="Role" Type="ElectrosDBModel.Store.Role" Multiplicity="1" />
+          <End Role="UserRole" Type="ElectrosDBModel.Store.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ElectrosDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ElectrosDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Account" EntityType="ElectrosDBModel.Account" />
+          <EntitySet Name="Category" EntityType="ElectrosDBModel.Category" />
+          <EntitySet Name="Comment" EntityType="ElectrosDBModel.Comment" />
+          <EntitySet Name="Country" EntityType="ElectrosDBModel.Country" />
+          <EntitySet Name="FaultLog" EntityType="ElectrosDBModel.FaultLog" />
+          <EntitySet Name="Order" EntityType="ElectrosDBModel.Order" />
+          <EntitySet Name="ProductOrder" EntityType="ElectrosDBModel.ProductOrder" />
+          <EntitySet Name="Rating" EntityType="ElectrosDBModel.Rating" />
+          <EntitySet Name="Role" EntityType="ElectrosDBModel.Role" />
+          <EntitySet Name="sysdiagrams" EntityType="ElectrosDBModel.sysdiagrams" />
+          <EntitySet Name="Town" EntityType="ElectrosDBModel.Town" />
+          <AssociationSet Name="FK_Comment_Account" Association="ElectrosDBModel.FK_Comment_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Account" Association="ElectrosDBModel.FK_Order_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating_Account" Association="ElectrosDBModel.FK_Rating_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Town_Country" Association="ElectrosDBModel.FK_Town_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Town" EntitySet="Town" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductOrder_Order" Association="ElectrosDBModel.FK_ProductOrder_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="ProductOrder" EntitySet="ProductOrder" />
+          </AssociationSet>
+          <AssociationSet Name="UserRole" Association="ElectrosDBModel.UserRole">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Role" EntitySet="Role" />
+          </AssociationSet>
+          <EntitySet Name="User" EntityType="ElectrosDBModel.User" />
+          <AssociationSet Name="FK_User_Account" Association="ElectrosDBModel.FK_User_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Town" Association="ElectrosDBModel.FK_User_Town">
+            <End Role="Town" EntitySet="Town" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <EntitySet Name="Product" EntityType="ElectrosDBModel.Product" />
+          <AssociationSet Name="FK_Product_Category" Association="ElectrosDBModel.FK_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Product" Association="ElectrosDBModel.FK_Comment_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductOrder_Product" Association="ElectrosDBModel.FK_ProductOrder_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductOrder" EntitySet="ProductOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating_Product" Association="ElectrosDBModel.FK_Rating_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <EntitySet Name="FaultReport" EntityType="ElectrosDBModel.FaultReport" />
+          <AssociationSet Name="FK_FaultReport_Account" Association="ElectrosDBModel.FK_FaultReport_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="FaultReport" EntitySet="FaultReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FaultLog_FaultReport" Association="ElectrosDBModel.FK_FaultLog_FaultReport">
+            <End Role="FaultReport" EntitySet="FaultReport" />
+            <End Role="FaultLog" EntitySet="FaultLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FaultReport_Product" Association="ElectrosDBModel.FK_FaultReport_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="FaultReport" EntitySet="FaultReport" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PIN" Type="Int32" />
+          <NavigationProperty Name="Comment" Relationship="ElectrosDBModel.FK_Comment_Account" FromRole="Account" ToRole="Comment" />
+          <NavigationProperty Name="Order" Relationship="ElectrosDBModel.FK_Order_Account" FromRole="Account" ToRole="Order" />
+          <NavigationProperty Name="Rating" Relationship="ElectrosDBModel.FK_Rating_Account" FromRole="Account" ToRole="Rating" />
+          <NavigationProperty Name="Role" Relationship="ElectrosDBModel.UserRole" FromRole="Account" ToRole="Role" />
+          <NavigationProperty Name="User" Relationship="ElectrosDBModel.FK_User_Account" FromRole="Account" ToRole="User" />
+          <NavigationProperty Name="FaultReport" Relationship="ElectrosDBModel.FK_FaultReport_Account" FromRole="Account" ToRole="FaultReport" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Product" Relationship="ElectrosDBModel.FK_Product_Category" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Comment1" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="AccountID" Type="Int32" />
+          <NavigationProperty Name="Account" Relationship="ElectrosDBModel.FK_Comment_Account" FromRole="Comment" ToRole="Account" />
+          <NavigationProperty Name="Product" Relationship="ElectrosDBModel.FK_Comment_Product" FromRole="Comment" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Town" Relationship="ElectrosDBModel.FK_Town_Country" FromRole="Country" ToRole="Town" />
+        </EntityType>
+        <EntityType Name="FaultLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="DateReport" Type="DateTime" />
+          <Property Name="FaultReportID" Type="Int32" />
+          <NavigationProperty Name="FaultReport" Relationship="ElectrosDBModel.FK_FaultLog_FaultReport" FromRole="FaultLog" ToRole="FaultReport" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateOfPurchase" Type="DateTime" />
+          <Property Name="WarrantyExpiryDate" Type="DateTime" />
+          <Property Name="Status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="AccountID" Type="Int32" />
+          <NavigationProperty Name="Account" Relationship="ElectrosDBModel.FK_Order_Account" FromRole="Order" ToRole="Account" />
+          <NavigationProperty Name="ProductOrder" Relationship="ElectrosDBModel.FK_ProductOrder_Order" FromRole="Order" ToRole="ProductOrder" />
+        </EntityType>
+        <EntityType Name="ProductOrder">
+          <Key>
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="ElectrosDBModel.FK_ProductOrder_Order" FromRole="ProductOrder" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="ElectrosDBModel.FK_ProductOrder_Product" FromRole="ProductOrder" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rating1" Type="Int32" />
+          <Property Name="AccountID" Type="Int32" />
+          <Property Name="ProductID" Type="Int32" />
+          <NavigationProperty Name="Account" Relationship="ElectrosDBModel.FK_Rating_Account" FromRole="Rating" ToRole="Account" />
+          <NavigationProperty Name="Product" Relationship="ElectrosDBModel.FK_Rating_Product" FromRole="Rating" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Account" Relationship="ElectrosDBModel.UserRole" FromRole="Role" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Town">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CountryID" Type="Int32" />
+          <NavigationProperty Name="Country" Relationship="ElectrosDBModel.FK_Town_Country" FromRole="Town" ToRole="Country" />
+          <NavigationProperty Name="User" Relationship="ElectrosDBModel.FK_User_Town" FromRole="Town" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Comment_Account">
+          <End Role="Account" Type="ElectrosDBModel.Account" Multiplicity="0..1" />
+          <End Role="Comment" Type="ElectrosDBModel.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Account">
+          <End Role="Account" Type="ElectrosDBModel.Account" Multiplicity="0..1" />
+          <End Role="Order" Type="ElectrosDBModel.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating_Account">
+          <End Role="Account" Type="ElectrosDBModel.Account" Multiplicity="0..1" />
+          <End Role="Rating" Type="ElectrosDBModel.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Town_Country">
+          <End Role="Country" Type="ElectrosDBModel.Country" Multiplicity="0..1" />
+          <End Role="Town" Type="ElectrosDBModel.Town" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Town">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductOrder_Order">
+          <End Role="Order" Type="ElectrosDBModel.Order" Multiplicity="1" />
+          <End Role="ProductOrder" Type="ElectrosDBModel.ProductOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductOrder">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserRole">
+          <End Role="Account" Type="ElectrosDBModel.Account" Multiplicity="*" />
+          <End Role="Role" Type="ElectrosDBModel.Role" Multiplicity="*" />
+        </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Surname" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ResidanceName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StreetName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Mobile" />
+          <Property Type="Int32" Name="AccountID" Nullable="false" />
+          <Property Type="Int32" Name="TownID" />
+          <NavigationProperty Name="Account" Relationship="ElectrosDBModel.FK_User_Account" FromRole="User" ToRole="Account" />
+          <NavigationProperty Name="Town" Relationship="ElectrosDBModel.FK_User_Town" FromRole="User" ToRole="Town" />
+        </EntityType>
+        <Association Name="FK_User_Account">
+          <End Type="ElectrosDBModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="ElectrosDBModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Town">
+          <End Type="ElectrosDBModel.Town" Role="Town" Multiplicity="0..1" />
+          <End Type="ElectrosDBModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Town">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="TownID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Features" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="StockAmount" />
+          <Property Type="Decimal" Name="Price" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="DateListed" />
+          <Property Type="Int32" Name="CategoryID" />
+          <Property Type="String" Name="Image" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Category" Relationship="ElectrosDBModel.FK_Product_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Comment" Relationship="ElectrosDBModel.FK_Comment_Product" FromRole="Product" ToRole="Comment" />
+          <NavigationProperty Name="ProductOrder" Relationship="ElectrosDBModel.FK_ProductOrder_Product" FromRole="Product" ToRole="ProductOrder" />
+          <NavigationProperty Name="Rating" Relationship="ElectrosDBModel.FK_Rating_Product" FromRole="Product" ToRole="Rating" />
+          <NavigationProperty Name="FaultReport" Relationship="ElectrosDBModel.FK_FaultReport_Product" FromRole="Product" ToRole="FaultReport" />
+        </EntityType>
+        <Association Name="FK_Product_Category">
+          <End Type="ElectrosDBModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="ElectrosDBModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Product">
+          <End Type="ElectrosDBModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="ElectrosDBModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductOrder_Product">
+          <End Type="ElectrosDBModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="ElectrosDBModel.ProductOrder" Role="ProductOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProductOrder">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating_Product">
+          <End Type="ElectrosDBModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="ElectrosDBModel.Rating" Role="Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="FaultReport">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TicketNum" />
+          <Property Type="Binary" Name="Barcode" MaxLength="Max" FixedLength="false" />
+          <Property Type="Int32" Name="ProductID" />
+          <Property Type="Int32" Name="AccountID" />
+          <NavigationProperty Name="Account" Relationship="ElectrosDBModel.FK_FaultReport_Account" FromRole="FaultReport" ToRole="Account" />
+          <NavigationProperty Name="FaultLog" Relationship="ElectrosDBModel.FK_FaultLog_FaultReport" FromRole="FaultReport" ToRole="FaultLog" />
+          <NavigationProperty Name="Product" Relationship="ElectrosDBModel.FK_FaultReport_Product" FromRole="FaultReport" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_FaultReport_Account">
+          <End Type="ElectrosDBModel.Account" Role="Account" Multiplicity="0..1" />
+          <End Type="ElectrosDBModel.FaultReport" Role="FaultReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FaultReport">
+              <PropertyRef Name="AccountID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FaultLog_FaultReport">
+          <End Type="ElectrosDBModel.FaultReport" Role="FaultReport" Multiplicity="0..1" />
+          <End Type="ElectrosDBModel.FaultLog" Role="FaultLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FaultReport">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FaultLog">
+              <PropertyRef Name="FaultReportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FaultReport_Product">
+          <End Type="ElectrosDBModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="ElectrosDBModel.FaultReport" Role="FaultReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FaultReport">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ElectrosDBModelStoreContainer" CdmEntityContainer="ElectrosDBEntities">
+          <EntitySetMapping Name="Account"><EntityTypeMapping TypeName="ElectrosDBModel.Account"><MappingFragment StoreEntitySet="Account">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Username" ColumnName="Username" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+            <ScalarProperty Name="PIN" ColumnName="PIN" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Category"><EntityTypeMapping TypeName="ElectrosDBModel.Category"><MappingFragment StoreEntitySet="Category">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Comment"><EntityTypeMapping TypeName="ElectrosDBModel.Comment"><MappingFragment StoreEntitySet="Comment">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Comment1" ColumnName="Comment" />
+            <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+            <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Country"><EntityTypeMapping TypeName="ElectrosDBModel.Country"><MappingFragment StoreEntitySet="Country">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="FaultLog"><EntityTypeMapping TypeName="ElectrosDBModel.FaultLog"><MappingFragment StoreEntitySet="FaultLog">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="DateReport" ColumnName="DateReport" />
+            <ScalarProperty Name="FaultReportID" ColumnName="FaultReportID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Order"><EntityTypeMapping TypeName="ElectrosDBModel.Order"><MappingFragment StoreEntitySet="Order">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="DateOfPurchase" ColumnName="DateOfPurchase" />
+            <ScalarProperty Name="WarrantyExpiryDate" ColumnName="WarrantyExpiryDate" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+            <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="ProductOrder"><EntityTypeMapping TypeName="ElectrosDBModel.ProductOrder"><MappingFragment StoreEntitySet="ProductOrder">
+            <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+            <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+            <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Rating"><EntityTypeMapping TypeName="ElectrosDBModel.Rating"><MappingFragment StoreEntitySet="Rating">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Rating1" ColumnName="Rating" />
+            <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+            <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Role"><EntityTypeMapping TypeName="ElectrosDBModel.Role"><MappingFragment StoreEntitySet="Role">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams"><EntityTypeMapping TypeName="ElectrosDBModel.sysdiagrams"><MappingFragment StoreEntitySet="sysdiagrams">
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+            <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+            <ScalarProperty Name="version" ColumnName="version" />
+            <ScalarProperty Name="definition" ColumnName="definition" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Town"><EntityTypeMapping TypeName="ElectrosDBModel.Town"><MappingFragment StoreEntitySet="Town">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <AssociationSetMapping Name="UserRole" TypeName="ElectrosDBModel.UserRole" StoreEntitySet="UserRole">
+            <EndProperty Name="Account">
+              <ScalarProperty Name="ID" ColumnName="AccountID" />
+            </EndProperty>
+            <EndProperty Name="Role">
+              <ScalarProperty Name="ID" ColumnName="RoleID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="ElectrosDBModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="TownID" ColumnName="TownID" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+                <ScalarProperty Name="ResidanceName" ColumnName="ResidanceName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="ElectrosDBModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="DateListed" ColumnName="DateListed" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="StockAmount" ColumnName="StockAmount" />
+                <ScalarProperty Name="Features" ColumnName="Features" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FaultReport">
+            <EntityTypeMapping TypeName="ElectrosDBModel.FaultReport">
+              <MappingFragment StoreEntitySet="FaultReport">
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+                <ScalarProperty Name="TicketNum" ColumnName="TicketNum" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ElectrosModel1">
+        <EntityTypeShape EntityType="ElectrosDBModel.Account" Width="1.5" PointX="0.75" PointY="11" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectrosDBModel.Category" Width="1.5" PointX="1.5" PointY="20" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectrosDBModel.Comment" Width="1.5" PointX="3" PointY="11.375" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectrosDBModel.Country" Width="1.5" PointX="1.5" PointY="5.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectrosDBModel.FaultLog" Width="1.5" PointX="8.25" PointY="11.375" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectrosDBModel.Order" Width="1.5" PointX="3" PointY="16.75" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectrosDBModel.ProductOrder" Width="1.5" PointX="5.25" PointY="17" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectrosDBModel.Rating" Width="1.5" PointX="3" PointY="8.375" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectrosDBModel.Role" Width="1.5" PointX="3" PointY="22.75" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectrosDBModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="2.5" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectrosDBModel.Town" Width="1.5" PointX="3.75" PointY="5.5" Height="1.9802864583333388" IsExpanded="true" />
+        <AssociationConnector Association="ElectrosDBModel.FK_Comment_Account" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="12.4612939453125" />
+          <ConnectorPoint PointX="3" PointY="12.4612939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="ElectrosDBModel.FK_Order_Account" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.671875" PointY="13.941793619791666" />
+          <ConnectorPoint PointX="1.671875" PointY="17.932444661458334" />
+          <ConnectorPoint PointX="3" PointY="17.932444661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="ElectrosDBModel.FK_Rating_Account" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.7031275" PointY="11" />
+          <ConnectorPoint PointX="1.7031275" PointY="9.4612939453125" />
+          <ConnectorPoint PointX="3" PointY="9.4612939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="ElectrosDBModel.FK_Town_Country" ManuallyRouted="false">
+          <ConnectorPoint PointX="3" PointY="6.547841796875" />
+          <ConnectorPoint PointX="3.75" PointY="6.547841796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="ElectrosDBModel.FK_ProductOrder_Order" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="17.990143229166669" />
+          <ConnectorPoint PointX="4.6822940104166664" PointY="17.990143229166669" />
+          <ConnectorPoint PointX="4.8489606770833324" PointY="17.990143229166669" />
+          <ConnectorPoint PointX="4.9244828385416666" PointY="17.990143229166669" />
+          <ConnectorPoint PointX="5.0911495052083326" PointY="17.990143229166669" />
+          <ConnectorPoint PointX="5.25" PointY="17.990143229166669" />
+        </AssociationConnector>
+        <AssociationConnector Association="ElectrosDBModel.UserRole" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.09375" PointY="13.941793619791666" />
+          <ConnectorPoint PointX="1.09375" PointY="23.547841796875" />
+          <ConnectorPoint PointX="2.1354166666666665" PointY="23.547841796875" />
+          <ConnectorPoint PointX="2.3020833333333335" PointY="23.547841796875" />
+          <ConnectorPoint PointX="3" PointY="23.547841796875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="ElectrosDBModel.User" Width="1.5" PointX="6" PointY="6.125" Height="3.1340950520833388" />
+        <AssociationConnector Association="ElectrosDBModel.FK_User_Account" >
+          <ConnectorPoint PointX="1.09375" PointY="11" />
+          <ConnectorPoint PointX="1.09375" PointY="7.9276432291666694" />
+          <ConnectorPoint PointX="6" PointY="7.9276432291666694" />
+        </AssociationConnector>
+        <AssociationConnector Association="ElectrosDBModel.FK_User_Town" >
+          <ConnectorPoint PointX="5.25" PointY="6.8026432291666659" />
+          <ConnectorPoint PointX="6" PointY="6.8026432291666659" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="ElectrosDBModel.Product" Width="1.5" PointX="3.75" PointY="25.125" Height="3.5186979166666674" />
+        <AssociationConnector Association="ElectrosDBModel.FK_Product_Category" >
+          <ConnectorPoint PointX="2.21875" PointY="21.595683593750003" />
+          <ConnectorPoint PointX="2.21875" PointY="26.884348958333334" />
+          <ConnectorPoint PointX="3.75" PointY="26.884348958333334" />
+        </AssociationConnector>
+        <AssociationConnector Association="ElectrosDBModel.FK_Comment_Product" >
+          <ConnectorPoint PointX="4.7656273437499994" PointY="25.125" />
+          <ConnectorPoint PointX="4.7656273437499994" PointY="12.4612939453125" />
+          <ConnectorPoint PointX="4.5" PointY="12.4612939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="ElectrosDBModel.FK_ProductOrder_Product" >
+          <ConnectorPoint PointX="5.25" PointY="26.884348958333334" />
+          <ConnectorPoint PointX="5.625" PointY="26.884348958333334" />
+          <ConnectorPoint PointX="5.625" PointY="18.980286458333332" />
+        </AssociationConnector>
+        <AssociationConnector Association="ElectrosDBModel.FK_Rating_Product" >
+          <ConnectorPoint PointX="5.007816171875" PointY="25.125" />
+          <ConnectorPoint PointX="5.007816171875" PointY="9.4612939453125" />
+          <ConnectorPoint PointX="4.5" PointY="9.4612939453125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="ElectrosDBModel.FaultReport" Width="1.5" PointX="6" PointY="20.5" Height="2.5571907552083388" />
+        <AssociationConnector Association="ElectrosDBModel.FK_FaultReport_Account" >
+          <ConnectorPoint PointX="1.2968775" PointY="13.941793619791666" />
+          <ConnectorPoint PointX="1.2968775" PointY="22.172841796875" />
+          <ConnectorPoint PointX="2.1354166666666665" PointY="22.172841796875" />
+          <ConnectorPoint PointX="2.3020833333333335" PointY="22.172841796875" />
+          <ConnectorPoint PointX="4.6822940104166664" PointY="22.172841796875" />
+          <ConnectorPoint PointX="4.8489606770833324" PointY="22.172841796875" />
+          <ConnectorPoint PointX="4.9244828385416666" PointY="22.172841796875" />
+          <ConnectorPoint PointX="5.2434939192708336" PointY="22.172841796875" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="22.172841796875" />
+          <ConnectorPoint PointX="5.708333333333333" PointY="22.172841796875" />
+          <ConnectorPoint PointX="6" PointY="22.172841796875" />
+        </AssociationConnector>
+        <AssociationConnector Association="ElectrosDBModel.FK_FaultLog_FaultReport" >
+          <ConnectorPoint PointX="7.15625" PointY="20.5" />
+          <ConnectorPoint PointX="7.15625" PointY="12.4612939453125" />
+          <ConnectorPoint PointX="8.25" PointY="12.4612939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="ElectrosDBModel.FK_FaultReport_Product" >
+          <ConnectorPoint PointX="5.1601605859375" PointY="25.125" />
+          <ConnectorPoint PointX="5.1601605859375" PointY="21.3051683984375" />
+          <ConnectorPoint PointX="5.541666666666667" PointY="21.3051683984375" />
+          <ConnectorPoint PointX="5.708333333333333" PointY="21.3051683984375" />
+          <ConnectorPoint PointX="6" PointY="21.3051683984375" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

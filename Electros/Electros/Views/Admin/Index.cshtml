@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Common.FaultLog>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Search","Admin", FormMethod.Get))
+{
+    @Html.Label("Enter clientID : ")
+    @Html.TextBox("accountID")
+    <input type="submit" value="Search" />
+}
+<table>
+    <tr>
+        <th>
+            Status
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            DateReport
+        </th>
+        <th>
+            FaultReportID
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateReport)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FaultReportID)
+        </td>
+        <td>
+            @Html.ActionLink("Update Report", "Update", new { reportID = item.FaultReportID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="737151b7-e536-4889-ab85-bb7f38899d3d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:13866/ProductService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ProductService.xsd" MetadataType="Schema" ID="0450022c-a9cb-4258-8430-443208384143" SourceId="1" SourceUrl="http://localhost:13866/ProductService.svc?xsd=xsd4" />
+    <MetadataFile FileName="ProductService1.xsd" MetadataType="Schema" ID="3e872704-e02a-443e-9d84-32b5955f834a" SourceId="1" SourceUrl="http://localhost:13866/ProductService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ProductService2.xsd" MetadataType="Schema" ID="1443a361-5e59-43f1-a1e0-8ba1ce4e32ca" SourceId="1" SourceUrl="http://localhost:13866/ProductService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ProductService3.xsd" MetadataType="Schema" ID="bbc52d8c-b0fa-49aa-9794-a44cbc831a82" SourceId="1" SourceUrl="http://localhost:13866/ProductService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ProductService4.xsd" MetadataType="Schema" ID="a94e815b-d8e9-4baa-949f-e5d948bc5b65" SourceId="1" SourceUrl="http://localhost:13866/ProductService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ProductService.disco" MetadataType="Disco" ID="a8c904a5-0b18-46fd-b564-770f41fc00ea" SourceId="1" SourceUrl="http://localhost:13866/ProductService.svc?disco" />
+    <MetadataFile FileName="ProductService.wsdl" MetadataType="Wsdl" ID="279cceff-1f2f-4915-a743-7699eeb69148" SourceId="1" SourceUrl="http://localhost:13866/ProductService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

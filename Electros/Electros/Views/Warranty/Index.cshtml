@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Common.ProductOrder>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+       <th>Image</th>
+        <th>Product Name</th>
+        <th> Quantity </th>
+         <th>Date of Purchase</th>
+         <th>Price</th>
+        <th>Expiry Date</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       <td>
+            <img src="@Url.Content(String.Format("~/{0}", item.Product.Image))"  width="100px" height="100px"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order.DateOfPurchase)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.Price)
+        </td>
+        <td>
+        @Html.DisplayFor(modelItem => item.Order.WarrantyExpiryDate)
+        </td>
+        <td>
+           @Html.ActionLink("Generate Ticket", "GenerateTicket", new { pid = item.ProductID})
+        </td>
+    </tr>
+}
+
+</table>

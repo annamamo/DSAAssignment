@@ -1,0 +1,135 @@
+﻿@model Electros.Models.RegistrationModel
+
+@{
+    ViewBag.Title = "RegisterUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>RegisterUser</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@{var message = TempData["Message"];}
+@{var token = "Your token is"+ TempData["Token"];}
+<p>@token</p>
+<p>@message</p>
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>RegistrationModel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.myUser.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.myUser.Name)
+            @Html.ValidationMessageFor(model => model.myUser.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.myUser.Surname)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.myUser.Surname)
+            @Html.ValidationMessageFor(model => model.myUser.Surname)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.myUser.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.myUser.Email)
+            @Html.ValidationMessageFor(model => model.myUser.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.myUser.ResidanceName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.myUser.ResidanceName)
+            @Html.ValidationMessageFor(model => model.myUser.ResidanceName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.myUser.StreetName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.myUser.StreetName)
+            @Html.ValidationMessageFor(model => model.myUser.StreetName)
+            
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.myUser.Mobile)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.myUser.Mobile)
+            @Html.ValidationMessageFor(model => model.myUser.Mobile)
+        </div>
+
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.myUser.AccountID)
+        </div>*@
+        @*<div class="editor-field">
+            @Html.HiddenFor(model => model.myUser.AccountID)
+            @Html.ValidationMessageFor(model => model.myUser.AccountID)
+        </div>*@
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.myUser.TownID)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.myUser.TownID, Model.TownList)
+            @Html.ValidationMessageFor(model => model.myUser.TownID)
+        </div>
+        @*need to show country*@
+        <div class="editor-label">
+            @Html.LabelFor(model => model.myAccount.Username)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.myAccount.Username)
+            @Html.ValidationMessageFor(model => model.myAccount.Username)
+        </div>
+
+         <div class="editor-label">
+            @Html.LabelFor(model => model.myAccount.Password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.myAccount.Password)
+            @Html.ValidationMessageFor(model => model.myAccount.Password)
+            
+        </div>
+
+         <div class="editor-label">
+            @Html.LabelFor(model => model.myAccount.PIN)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.myAccount.PIN)
+            @Html.ValidationMessageFor(model => model.myAccount.PIN)
+        </div>
+       @* show checkbox roles*@
+        <div class="editor-label">
+            @Html.LabelFor(model => model.myRole)
+        </div>
+        <div class="editor-field">
+           @for (int i = 0; i < Model.myRole.Count; i++)
+            {
+               @*<input type="checkbox" value="@Model.myRole[i].ID" checked="@Model.roles[i].Checked" name="ids" />*@
+              
+                @Html.CheckBoxFor(m => m.roles[i].Checked)
+                @Html.HiddenFor(m => m.myRole[i].ID)
+                @Html.DisplayFor(m => m.myRole[i].Name)
+            } 
+            
+            </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

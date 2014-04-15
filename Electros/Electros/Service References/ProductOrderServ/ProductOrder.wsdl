@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ProductOrder" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:13866/ProductOrder.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:13866/ProductOrder.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:13866/ProductOrder.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+      <xsd:import schemaLocation="http://localhost:13866/ProductOrder.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" />
+      <xsd:import schemaLocation="http://localhost:13866/ProductOrder.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IProductOrder_addOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:addOrder" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_addOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_addProductOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:addProductOrder" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_addProductOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addProductOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_getOrderIDByAccountIDStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:getOrderIDByAccountIDStatus" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_getOrderIDByAccountIDStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getOrderIDByAccountIDStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_DeleteProductOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProductOrder" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_DeleteProductOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProductOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_getProductOrderID_InputMessage">
+    <wsdl:part name="parameters" element="tns:getProductOrderID" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_getProductOrderID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getProductOrderIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_UpdateProductOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProductOrder" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_UpdateProductOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProductOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_getUserProductOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUserProductOrder" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_getUserProductOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUserProductOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_getProductOrderByOrderID_InputMessage">
+    <wsdl:part name="parameters" element="tns:getProductOrderByOrderID" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_getProductOrderByOrderID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getProductOrderByOrderIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_DeleteProductOrderByIDs_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProductOrderByIDs" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_DeleteProductOrderByIDs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProductOrderByIDsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_UpdateOrder_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrder" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_UpdateOrder_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_getShippedOrders_InputMessage">
+    <wsdl:part name="parameters" element="tns:getShippedOrders" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_getShippedOrders_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getShippedOrdersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_getPurchasesUnderWarranty_InputMessage">
+    <wsdl:part name="parameters" element="tns:getPurchasesUnderWarranty" />
+  </wsdl:message>
+  <wsdl:message name="IProductOrder_getPurchasesUnderWarranty_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getPurchasesUnderWarrantyResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IProductOrder">
+    <wsdl:operation name="addOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductOrder/addOrder" message="tns:IProductOrder_addOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductOrder/addOrderResponse" message="tns:IProductOrder_addOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addProductOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductOrder/addProductOrder" message="tns:IProductOrder_addProductOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductOrder/addProductOrderResponse" message="tns:IProductOrder_addProductOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getOrderIDByAccountIDStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductOrder/getOrderIDByAccountIDStatus" message="tns:IProductOrder_getOrderIDByAccountIDStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductOrder/getOrderIDByAccountIDStatusResponse" message="tns:IProductOrder_getOrderIDByAccountIDStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProductOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductOrder/DeleteProductOrder" message="tns:IProductOrder_DeleteProductOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductOrder/DeleteProductOrderResponse" message="tns:IProductOrder_DeleteProductOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getProductOrderID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductOrder/getProductOrderID" message="tns:IProductOrder_getProductOrderID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductOrder/getProductOrderIDResponse" message="tns:IProductOrder_getProductOrderID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProductOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductOrder/UpdateProductOrder" message="tns:IProductOrder_UpdateProductOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductOrder/UpdateProductOrderResponse" message="tns:IProductOrder_UpdateProductOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserProductOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductOrder/getUserProductOrder" message="tns:IProductOrder_getUserProductOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductOrder/getUserProductOrderResponse" message="tns:IProductOrder_getUserProductOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getProductOrderByOrderID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductOrder/getProductOrderByOrderID" message="tns:IProductOrder_getProductOrderByOrderID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductOrder/getProductOrderByOrderIDResponse" message="tns:IProductOrder_getProductOrderByOrderID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProductOrderByIDs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductOrder/DeleteProductOrderByIDs" message="tns:IProductOrder_DeleteProductOrderByIDs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductOrder/DeleteProductOrderByIDsResponse" message="tns:IProductOrder_DeleteProductOrderByIDs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrder">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductOrder/UpdateOrder" message="tns:IProductOrder_UpdateOrder_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductOrder/UpdateOrderResponse" message="tns:IProductOrder_UpdateOrder_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getShippedOrders">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductOrder/getShippedOrders" message="tns:IProductOrder_getShippedOrders_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductOrder/getShippedOrdersResponse" message="tns:IProductOrder_getShippedOrders_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getPurchasesUnderWarranty">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductOrder/getPurchasesUnderWarranty" message="tns:IProductOrder_getPurchasesUnderWarranty_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductOrder/getPurchasesUnderWarrantyResponse" message="tns:IProductOrder_getPurchasesUnderWarranty_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IProductOrder" type="tns:IProductOrder">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="addOrder">
+      <soap:operation soapAction="http://tempuri.org/IProductOrder/addOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addProductOrder">
+      <soap:operation soapAction="http://tempuri.org/IProductOrder/addProductOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getOrderIDByAccountIDStatus">
+      <soap:operation soapAction="http://tempuri.org/IProductOrder/getOrderIDByAccountIDStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProductOrder">
+      <soap:operation soapAction="http://tempuri.org/IProductOrder/DeleteProductOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProductOrderID">
+      <soap:operation soapAction="http://tempuri.org/IProductOrder/getProductOrderID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProductOrder">
+      <soap:operation soapAction="http://tempuri.org/IProductOrder/UpdateProductOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserProductOrder">
+      <soap:operation soapAction="http://tempuri.org/IProductOrder/getUserProductOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProductOrderByOrderID">
+      <soap:operation soapAction="http://tempuri.org/IProductOrder/getProductOrderByOrderID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProductOrderByIDs">
+      <soap:operation soapAction="http://tempuri.org/IProductOrder/DeleteProductOrderByIDs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrder">
+      <soap:operation soapAction="http://tempuri.org/IProductOrder/UpdateOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getShippedOrders">
+      <soap:operation soapAction="http://tempuri.org/IProductOrder/getShippedOrders" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPurchasesUnderWarranty">
+      <soap:operation soapAction="http://tempuri.org/IProductOrder/getPurchasesUnderWarranty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProductOrder">
+    <wsdl:port name="BasicHttpBinding_IProductOrder" binding="tns:BasicHttpBinding_IProductOrder">
+      <soap:address location="http://localhost:13866/ProductOrder.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
