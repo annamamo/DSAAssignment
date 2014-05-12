@@ -6,7 +6,9 @@
 }
 
 <h2>Update</h2>
-
+<br />
+<p style="color:Red">@TempData["CatchError"]</p>
+<br />
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
@@ -15,18 +17,31 @@
     <fieldset>
         <legend>FaultModel</legend>
 
-        <div class="editor-label">
+       @* <div class="editor-label">
             @Html.LabelFor(model => model.Status)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Status)
             @Html.ValidationMessageFor(model => model.Status)
+        </div>*@
+
+
+        @*DropDownlist status*@
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Status)
+        </div>
+        <div class="editor-field">
+            @*@Html.EditorFor(model => model.Status)
+            @Html.DropDownListFor(m => m.RoleCode, new SelectList(new MvcApplication1.Models.RoleViewModel().GetRoles(), "Id", "RoleCode"))*@
+            @Html.DropDownListFor(model => model.stat, new SelectList(new Electros.Models.FaultModel().GetStatus(), "IdStatus", "stat"))
+            @Html.ValidationMessageFor(model => model.Status)
         </div>
 
+         @*End of DropDownlist status*@
         <div class="editor-label">
             @Html.LabelFor(model => model.Description)
         </div>
-        <div class="editor-field">
+        <div class="editor-field" style="color:Red">
             @Html.EditorFor(model => model.Description)
             @Html.ValidationMessageFor(model => model.Description)
         </div>
@@ -45,6 +60,6 @@
     </fieldset>
 }
 
-<div>
+@*<div>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</div>*@

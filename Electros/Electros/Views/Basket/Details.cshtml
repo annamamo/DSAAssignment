@@ -7,9 +7,7 @@
 
 <h2>Details</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table>
     <tr>
         <th>Image</th>
@@ -18,6 +16,7 @@
         <th>Date of Purchase</th>
         <th>Warranty Expiry Date</th>
         <th>Quantity</th>
+        <th>Status</th>
        @* later add status of fault*@
     </tr>
 
@@ -27,12 +26,44 @@
         <td>@Html.DisplayFor(modelItem => Model.Product.Name)</td>
         <td>@Html.DisplayFor(modelItem => Model.Product.Features)</td>
        
-        <td>@Html.DisplayFor(modelItem => Model.Order.DateOfPurchase)</td>
-        <td>@Html.DisplayFor(modelItem => Model.Order.WarrantyExpiryDate)</td>
+        <td>
+            @{var date = Convert.ToDateTime(Model.Order.DateOfPurchase);}
+            @{var d2 = date.ToShortDateString();}
+            @*@Html.DisplayFor(modelItem => Model.Order.DateOfPurchase)*@
+            @Html.DisplayFor(modelItem => d2)
+        </td>
+        <td>
+            @{var date1 = Convert.ToDateTime(Model.Order.WarrantyExpiryDate);}
+            @{var d21 = date1.ToShortDateString();}
+           @* @Html.DisplayFor(modelItem => Model.Order.WarrantyExpiryDate)*@
+            @Html.DisplayFor(modelItem => d21)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => Model.Quantity)
         </td>
-      
+      <td>
+      @{
+          List<Common.FaultReport> faultList = new List<Common.FaultReport>();
+          string pID = @Html.DisplayFor(model => model.Product.ID).ToString();
+          string aID = @Html.DisplayFor(model => model.Order.AccountID).ToString();
+          int proID = Convert.ToInt32(pID);
+          int accID = Convert.ToInt32(aID);
+
+          faultList = new Electros.FaultsServ.FaultReportLogServiceClient().getFaultByAccountIDPRoductID(accID, proID).ToList();
+          string faultStatus = "";
+          foreach(Common.FaultReport f in faultList)
+          {
+              List<Common.FaultLog> fltemp = new Electros.FaultsServ.FaultReportLogServiceClient().getFaultLogByReportID(f.ID).ToList();
+              foreach(Common.FaultLog fl in fltemp)
+              {
+                  faultStatus = fl.Status;
+              }
+          }
+          ViewBag.status = faultStatus.ToString();
+          
+          }
+          @ViewBag.status
+      </td>
         @*<td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |

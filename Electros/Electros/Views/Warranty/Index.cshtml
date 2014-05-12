@@ -5,11 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Manage Returns / Faults</h2>
+<br />
+<p style="color:Red">@TempData["CatchError"]</p>
+<br />
 <table>
     <tr>
        <th>Image</th>
@@ -33,13 +32,19 @@
             @Html.DisplayFor(modelItem => item.Quantity)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Order.DateOfPurchase)
+        @{var date = Convert.ToDateTime(item.Order.DateOfPurchase);}
+        @{var d2 = date.ToShortDateString();}
+            @*@Html.DisplayFor(modelItem => item.Order.DateOfPurchase)*@
+            @Html.DisplayFor(modelItem => d2)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Product.Price)
         </td>
         <td>
-        @Html.DisplayFor(modelItem => item.Order.WarrantyExpiryDate)
+        @{var date2 = Convert.ToDateTime(item.Order.WarrantyExpiryDate);}
+        @{var d21 = date2.ToShortDateString();}
+       @* @Html.DisplayFor(modelItem => item.Order.WarrantyExpiryDate)*@
+        @Html.DisplayFor(modelItem => d21)
         </td>
         <td>
            @Html.ActionLink("Generate Ticket", "GenerateTicket", new { pid = item.ProductID})

@@ -7,10 +7,38 @@
 }
 
 <h2>ProductList</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<br />
+<p style="color:Red">@TempData["OutOfStock"]</p>
+<p style="color:Red">@TempData["Error"]</p>
+<p style="color:Red">@TempData["Null"]</p>
+<p style="color:Red">@TempData["CatchError"]</p>
+<br />
+@using (Html.BeginForm("Filter","Product", FormMethod.Get))
+{
+    @Html.Label("Category : ")
+    @Html.TextBox("category")
+    @Html.Label("Name : ")
+    @Html.TextBox("name")
+    @Html.Label("Lowest price : ")
+    @Html.TextBox("lowPrice")
+    @Html.Label("Highest price: ")
+    @Html.TextBox("highPrice")
+    <input type="submit" value="Search" />
+}
+<br />
+@using (Html.BeginForm("SortByHighPrice", "Product", FormMethod.Get))
+{ 
+    <input type="submit" value="Sort by Highest Price" />
+}
+@using (Html.BeginForm("SortByLowPrice", "Product", FormMethod.Get))
+{ 
+    <input type="submit" value="Sort by Lowest Price" />
+}
+@using (Html.BeginForm("SortByDate", "Product", FormMethod.Get))
+{ 
+    <input type="submit" value="Sort by Date" />
+}
+<br />
 <table>
     <tr>
         <th>
@@ -28,6 +56,7 @@
         <th>
             Price
         </th>
+        <th> Date Listed</th>
         
     </tr>
 
@@ -53,7 +82,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
-        
+        <td>
+        @{var date = Convert.ToDateTime(item.DateListed);}
+        @{var d2 = date.ToShortDateString();}
+            @*@Html.DisplayFor(modelItem => item.DateListed)*@
+            @Html.DisplayFor(modelItem => d2)
+        </td>
                 
         <td>
             

@@ -27,5 +27,23 @@ namespace Data
         {
             return entities.FaultLog.AsEnumerable();
         }
+
+        public IEnumerable<FaultLog> searchLogByDates(DateTime dateFrom, DateTime dateTo)
+        {
+            return entities.FaultLog.Where(fl => fl.DateReport >= dateFrom && fl.DateReport <= dateTo);
+        }
+        //search all combinations
+        public IEnumerable<FaultLog> search(int accountID, int reportID, DateTime dateFrom, DateTime dateTo)
+        {
+            FaultReport f = new DAFaultReport().getFaultByID(reportID);
+            return entities.FaultLog.Where(fl => fl.FaultReportID == reportID && f.AccountID == accountID && fl.DateReport >= dateFrom && fl.DateReport <= dateTo).ToList();
+        }
+
+        public IEnumerable<FaultLog> sortByDate()
+        {
+           // return test.OrderBy(t => t.DateReport);
+            return entities.FaultLog.OrderBy(fl => fl.DateReport);
+        }
+        
     }
 }

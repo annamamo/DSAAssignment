@@ -48,6 +48,21 @@ namespace Data
             entities.ProductOrder.DeleteObject(getProductOrderID(productID, orderID));
             entities.SaveChanges();
         }
+
+        public void UpdateQtyProduct(int qty, int productID, int orderID)
+        {
+            ProductOrder po = getProductOrderID(productID, orderID);
+            po.Quantity = qty;
+            entities.ProductOrder.ApplyCurrentValues(po);
+            entities.SaveChanges();
+            //Product pro = GetProductByID(productID);
+            //pro.StockAmount = newStock;
+            //entities.Product.ApplyCurrentValues(pro);
+            //entities.SaveChanges();
+            //entities.ProductOrder.Attach(getProductOrderID(po.ProductID, po.OrderID));
+            //entities.ProductOrder.ApplyCurrentValues(po);
+            //entities.SaveChanges();
+        }
         
     }
 }

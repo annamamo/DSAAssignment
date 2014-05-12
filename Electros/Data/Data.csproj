@@ -50,6 +50,7 @@
     <Compile Include="DAOrder.cs" />
     <Compile Include="DAProduct.cs" />
     <Compile Include="DAProductOrder.cs" />
+    <Compile Include="DARating.cs" />
     <Compile Include="DARole.cs" />
     <Compile Include="DATown.cs" />
     <Compile Include="DAUser.cs" />

@@ -1,18 +1,33 @@
-﻿@model IEnumerable<Common.ProductOrder>
+﻿@*@model IEnumerable<Common.ProductOrder>*@
+@model  Electros.Models.ProductModel
 
 @{
     ViewBag.Title = "UserHistory";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>UserHistory</h2>
+<h2>User History</h2>
+<br />
+<p style="color:Red">@TempData["CatchError"]</p>
+<p style="color:Red">@TempData["NoFault"]</p>
+<p style="color:Red">@TempData["NullMsg"]</p>
+<p style="color:Red">@TempData["DatesError"]</p>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
+<br />
+@using (Html.BeginForm("Filter","Basket", FormMethod.Get))
+{
+    
+    @Html.Label("Date From : ")
+    @Html.TextBox("dateFrom")
+    @Html.Label("Date To : ")
+    @Html.TextBox("dateTo")
+    <input type="submit" value="Filter" />
+}
+<br />
 <table>
     <tr>
-        <th>Image</th>
+        <th></th>
         <th>Product Name</th>
         <th> Quantity </th>
          <th>Date of Purchase</th>
@@ -20,19 +35,22 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.productOrderList) {
     <tr>
        <td>
             <img src="@Url.Content(String.Format("~/{0}", item.Product.Image))"  width="100px" height="100px"/>
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.Name)
+          <td>
+           @Html.DisplayFor(modelItem => item.Product.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
+            @Html.DisplayFor(modelItem => item.Product.StockAmount)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Order.DateOfPurchase)
+            @{var date = Convert.ToDateTime(item.Order.DateOfPurchase);}
+            @{var d2 = date.ToShortDateString();}
+           @* @Html.DisplayFor(modelItem => item.Order.DateOfPurchase)*@
+            @Html.DisplayFor(modelItem => d2)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Product.Price)
@@ -41,8 +59,8 @@
         <td>
             
             @Html.ActionLink("Details", "Details", new {pid= item.ProductID ,oid= item.OrderID}) |
-            @Html.ActionLink("Post Comment", "PostComment", new {item.ProductID })
-
+            @Html.ActionLink("Post Comment & Rating", "PostComment", new {proID = item.ProductID }) |
+            @Html.ActionLink("Show Report","ShowReport", new {productID = item.ProductID, orderID = item.Order.ID, dateF = Model.from, dateT = Model.to})
         </td>
         
     </tr>

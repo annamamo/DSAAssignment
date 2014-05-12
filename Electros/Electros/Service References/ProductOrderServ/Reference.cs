@@ -50,6 +50,12 @@ namespace Electros.ProductOrderServ {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductOrder/getPurchasesUnderWarranty", ReplyAction="http://tempuri.org/IProductOrder/getPurchasesUnderWarrantyResponse")]
         Common.Order[] getPurchasesUnderWarranty(int accountID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductOrder/getOrderByIDs", ReplyAction="http://tempuri.org/IProductOrder/getOrderByIDsResponse")]
+        Common.Order getOrderByIDs(int accountID, int orderID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductOrder/UpdateQtyProduct", ReplyAction="http://tempuri.org/IProductOrder/UpdateQtyProductResponse")]
+        void UpdateQtyProduct(int qty, int productID, int orderID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -125,6 +131,14 @@ namespace Electros.ProductOrderServ {
         
         public Common.Order[] getPurchasesUnderWarranty(int accountID) {
             return base.Channel.getPurchasesUnderWarranty(accountID);
+        }
+        
+        public Common.Order getOrderByIDs(int accountID, int orderID) {
+            return base.Channel.getOrderByIDs(accountID, orderID);
+        }
+        
+        public void UpdateQtyProduct(int qty, int productID, int orderID) {
+            base.Channel.UpdateQtyProduct(qty, productID, orderID);
         }
     }
 }

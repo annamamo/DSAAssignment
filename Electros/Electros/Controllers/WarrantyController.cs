@@ -34,24 +34,31 @@ namespace Electros.Controllers
 
         public ActionResult Index()
         {
-
-            List<ProductOrder> productOrders = new List<ProductOrder>();
-
-            string username = Session["username"].ToString();
-            Account a = new AccountServ.AccountServiceClient().getAccountByUsername(username);
-            int accountID = a.ID;
-
-            List<Order> ordersList = new ProductOrderServ.ProductOrderClient().getPurchasesUnderWarranty(accountID).ToList();
-            foreach (Order i in ordersList)
-            {
-                List<ProductOrder> po = new ProductOrderServ.ProductOrderClient().getProductOrderByOrderID(i.ID).ToList();
-
-                foreach (ProductOrder p in po)
+            
+                List<ProductOrder> productOrders = new List<ProductOrder>();
+                try
                 {
-                    productOrders.Add(p);
+                string username = Session["username"].ToString();
+                Account a = new AccountServ.AccountServiceClient().getAccountByUsername(username);
+                int accountID = a.ID;
+
+                List<Order> ordersList = new ProductOrderServ.ProductOrderClient().getPurchasesUnderWarranty(accountID).ToList();
+                foreach (Order i in ordersList)
+                {
+                    List<ProductOrder> po = new ProductOrderServ.ProductOrderClient().getProductOrderByOrderID(i.ID).ToList();
+
+                    foreach (ProductOrder p in po)
+                    {
+                        productOrders.Add(p);
+                    }
                 }
+                return View("Index", productOrders);
             }
-            return View("Index",productOrders);
+            catch (Exception ex)
+            {
+                TempData["CatchError"] = "An error was encountered. Please try again later";
+                return View("Index", productOrders);
+            }
         }
        
         public ActionResult GenerateBarcode()
@@ -99,94 +106,106 @@ namespace Electros.Controllers
 
         }
 
+        [Authorize(Roles = "Admin, User")]
         public ActionResult GenerateTicket(int pid)
         {
             FaultModel fm = new FaultModel();
             return View(fm);
         }
         
+        [Authorize(Roles = "Admin, User")]
         [HttpPost]
         public ActionResult GenerateTicket(FaultModel fm, int pid)
         {
-            
-            string username = Session["username"].ToString();
-            Account a = new AccountServ.AccountServiceClient().getAccountByUsername(username);
-            int accountID = a.ID;
+            //try
+            //{
+               string username = Session["username"].ToString();
+                Account a = new AccountServ.AccountServiceClient().getAccountByUsername(username);
+                int accountID = a.ID;
 
-            int ticketNum = new FaultsServ.FaultReportLogServiceClient().GenerateTicketNum();
-            FaultReport checkTicketnum = new FaultsServ.FaultReportLogServiceClient().getTicketNum(ticketNum);
-            if (checkTicketnum == null)
-            {
-                //FaultReport
-                FaultReport fr = new FaultReport();
-                //fr.ID = new int();
-                fr.TicketNum = ticketNum;
-                //add barcode
-                BarCodeServ.BarCodeSoapClient bc = new BarCodeServ.BarCodeSoapClient();
+                int ticketNum = new FaultsServ.FaultReportLogServiceClient().GenerateTicketNum();
+                FaultReport checkTicketnum = new FaultsServ.FaultReportLogServiceClient().getTicketNum(ticketNum);
+                if (checkTicketnum == null)
+                {
+                    //FaultReport
+                    FaultReport fr = new FaultReport();
+                    //fr.ID = new int();
+                    fr.TicketNum = ticketNum;
+                    //add barcode
+                    BarCodeServ.BarCodeSoapClient bc = new BarCodeServ.BarCodeSoapClient();
 
-                BarCodeData barCodeData = new BarCodeData();
-                barCodeData.Height = 125;
-                barCodeData.Width = 225;
-                barCodeData.Angle = 0;
-                barCodeData.Ratio = 5;
-                barCodeData.Module = 0;
-                barCodeData.Left = 25;
-                barCodeData.Top = 0;
-                barCodeData.CheckSum = false;
-                barCodeData.FontName = "Arial";
-                barCodeData.BarColor = "Black";
-                barCodeData.BGColor = "White";
-                barCodeData.FontSize = 10.0f;
-                barCodeData.barcodeOption = BarcodeOption.Both;
-                barCodeData.barcodeType = BarcodeType.Code_2_5_interleaved;
-                barCodeData.checkSumMethod = CheckSumMethod.None;
-                barCodeData.showTextPosition = ShowTextPosition.BottomCenter;
-                barCodeData.BarCodeImageFormat = ImageFormats.PNG;
+                    BarCodeData barCodeData = new BarCodeData();
+                    barCodeData.Height = 125;
+                    barCodeData.Width = 225;
+                    barCodeData.Angle = 0;
+                    barCodeData.Ratio = 5;
+                    barCodeData.Module = 0;
+                    barCodeData.Left = 25;
+                    barCodeData.Top = 0;
+                    barCodeData.CheckSum = false;
+                    barCodeData.FontName = "Arial";
+                    barCodeData.BarColor = "Black";
+                    barCodeData.BGColor = "White";
+                    barCodeData.FontSize = 10.0f;
+                    barCodeData.barcodeOption = BarcodeOption.Both;
+                    barCodeData.barcodeType = BarcodeType.Code_2_5_interleaved;
+                    barCodeData.checkSumMethod = CheckSumMethod.None;
+                    barCodeData.showTextPosition = ShowTextPosition.BottomCenter;
+                    barCodeData.BarCodeImageFormat = ImageFormats.PNG;
 
 
-                Byte[] imgBarcode = bc.GenerateBarCode(barCodeData, randumNum.ToString());
-                MemoryStream memStream = new MemoryStream(imgBarcode);
-                Bitmap bm = new Bitmap(memStream);
-                bm.Save(HttpContext.Response.OutputStream, ImageFormat.Jpeg);
-                System.Drawing.Image image = System.Drawing.Image.FromStream(new System.IO.MemoryStream(imgBarcode));
-                
+                    Byte[] imgBarcode = bc.GenerateBarCode(barCodeData, randumNum.ToString());
+                    MemoryStream memStream = new MemoryStream(imgBarcode);
+                    Bitmap bm = new Bitmap(memStream);
+                    bm.Save(HttpContext.Response.OutputStream, ImageFormat.Jpeg);
+                    System.Drawing.Image image = System.Drawing.Image.FromStream(new System.IO.MemoryStream(imgBarcode));
 
-                //end of barcode method
-                fr.Barcode = imgBarcode;
-                fr.ProductID = pid;
-                fr.AccountID = accountID;
-                new FaultsServ.FaultReportLogServiceClient().Create(fr);
 
-                //FaultLog 
-                FaultReport details = new FaultsServ.FaultReportLogServiceClient().getFaultReportIDByAccountIDTicket(accountID, ticketNum);
-                
-                FaultLog fl = new FaultLog();
-                fl.Status = "Reported";
-                fl.Description = fm.Description + "Item has been reported but not yet picked up for service" ;
-                fl.DateReport = System.DateTime.Now;
-                fl.FaultReportID = details.ID;
+                    //end of barcode method
+                    fr.Barcode = imgBarcode;
+                    fr.ProductID = pid;
+                    fr.AccountID = accountID;
+                    new FaultsServ.FaultReportLogServiceClient().Create(fr);
 
-                new FaultsServ.FaultReportLogServiceClient().CreateLog(fl);
-                SendEmailToClient(accountID, image,pid,memStream);
-                //SendEmailToClient(accountID, memStream,pid);
-                return RedirectToAction("Index","Warranty");
-            }
-            else
-            {
-                //show error
-            }
-            return RedirectToAction("Index", "Warranty");
+                    //FaultLog 
+                    FaultReport details = new FaultsServ.FaultReportLogServiceClient().getFaultReportIDByAccountIDTicket(accountID, ticketNum);
+
+                    FaultLog fl = new FaultLog();
+                    fl.Status = "Reported";
+                    fl.Description = fm.Description;
+                    fl.DateReport = System.DateTime.Now;
+                    fl.FaultReportID = details.ID;
+
+                    new FaultsServ.FaultReportLogServiceClient().CreateLog(fl);
+                    SendEmailToClient(accountID, image, pid, memStream,Convert.ToInt32(fr.TicketNum));
+                    //SendEmailToClient(accountID, memStream,pid);
+                    return RedirectToAction("Index", "Warranty");
+                }
+                else
+                {
+                    //show error
+                    ViewBag.Msg = "An error was encountered during the generation of the ticket";
+                }
+                return RedirectToAction("Index", "Warranty");
+            //}
+            //catch (Exception ex)
+            //{
+            //    TempData["CatchError"] = "An error was encountered. Please try again later";
+            //    return RedirectToAction("Index", "Warranty");
+            //}
         }
 
-        public void SendEmailToClient(int accountID, Image img, int pid, MemoryStream stream)
+        public void SendEmailToClient(int accountID, Image img, int pid, MemoryStream stream, int ticketNum)
         {
             Product p = new ProductServ.ProductServiceClient().GetProductByID(pid);
 
             string username = Session["username"].ToString();
             Common.User details = new UserServ.UserServiceClient().getUSerByAccountID(accountID);
             
-            string body = "Dear " + "\n" + details.Name + " " + details.Surname + " you ticket of "+p.Name+" of your fault has been reported" +img  ;
-
+            string body = "Dear " + "\n" + details.Name + " " + details.Surname  ;
+            body += "<br />";
+            body += "The fault of the product"+ p.Name+" has been reported and your ticket number is : "+ ticketNum;
+            body += "Also attached is your barcode.";
             
            Bitmap bm = new Bitmap(stream);
             bm.Save(HttpContext.Response.OutputStream, ImageFormat.Jpeg);
@@ -202,8 +221,9 @@ namespace Electros.Controllers
                 mail.Attachments.Add(new Attachment(stream, "Barcodeimg.jpg", "image/jpg"));
                 mail.To.Add(details.Email);
                 mail.Subject = subject;
-                mail.Body = body;
                 mail.IsBodyHtml = true;
+                mail.Body = body;
+               
 
                 using (SmtpClient smtp = new SmtpClient(smtpAddress, portNumber))
                 {

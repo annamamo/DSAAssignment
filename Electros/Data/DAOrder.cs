@@ -50,5 +50,16 @@ namespace Data
         {
             return entities.Order.Where(o => o.AccountID == accountID && o.Status == "Shipped" && o.WarrantyExpiryDate > System.DateTime.Now);
         }
+
+        public IEnumerable<Order> getPurchasesByDates(int accountID,DateTime dateFrom, DateTime dateTo)
+        {
+            return entities.Order.Where(o => o.AccountID == accountID && o.DateOfPurchase >= dateFrom && o.DateOfPurchase <= dateTo && o.Status == "Shipped");
+        }
+
+        //get order for report by accountID and date of purchase
+        public Order getOrderByIDs(int accountID, int orderID)
+        {
+            return entities.Order.SingleOrDefault(o => o.AccountID == accountID && o.ID == orderID);
+        }
     }
 }

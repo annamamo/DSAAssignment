@@ -5,14 +5,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
+<h2>Faults</h2>
+<br />
+<p style="color:Red">@TempData["DatesError"]</p>
+<p style="color:Red">@TempData["TypeError"]</p>
+<br />
 @using (Html.BeginForm("Search","Admin", FormMethod.Get))
 {
     @Html.Label("Enter clientID : ")
     @Html.TextBox("accountID")
+    @Html.Label("Fault ID : ")
+    @Html.TextBox("faultID")
+    @Html.Label("Date From : ")
+    @Html.TextBox("dateFrom")
+    @Html.Label("Date To : ")
+    @Html.TextBox("dateTo")
     <input type="submit" value="Search" />
 }
+
+@using (Html.BeginForm("Sort", "Admin", FormMethod.Get))
+{
+    <input type="submit" value= "Sort By Date" /> 
+}
+<br />
 <table>
     <tr>
         <th>
@@ -30,7 +45,8 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Status)
@@ -39,7 +55,10 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateReport)
+        @{var date = Convert.ToDateTime(item.DateReport);}
+        @{var d2 = date.ToShortDateString();}
+           @* @Html.DisplayFor(modelItem => item.DateReport)*@
+            @Html.DisplayFor(modelItem => d2)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.FaultReportID)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ca165638-f0ff-47a5-b0b6-6f38c7607c74" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9ebcb60d-c7b9-4050-87c8-4313e522626c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -18,16 +18,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:13866/TownService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:1314/TownService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="TownService.xsd" MetadataType="Schema" ID="02d60cc3-0fed-4a26-87b0-068d040940a4" SourceId="1" SourceUrl="http://localhost:13866/TownService.svc?xsd=xsd1" />
-    <MetadataFile FileName="TownService1.xsd" MetadataType="Schema" ID="60683419-870e-434f-ba4a-f562fbb13282" SourceId="1" SourceUrl="http://localhost:13866/TownService.svc?xsd=xsd4" />
-    <MetadataFile FileName="TownService.disco" MetadataType="Disco" ID="beea0fce-2c19-4cbe-bb25-de1463bb8d01" SourceId="1" SourceUrl="http://localhost:13866/TownService.svc?disco" />
-    <MetadataFile FileName="TownService2.xsd" MetadataType="Schema" ID="cada2aa7-b961-4619-9384-5cba6eae756e" SourceId="1" SourceUrl="http://localhost:13866/TownService.svc?xsd=xsd2" />
-    <MetadataFile FileName="TownService3.xsd" MetadataType="Schema" ID="e25f4968-f824-4e22-830c-bff8aac527c9" SourceId="1" SourceUrl="http://localhost:13866/TownService.svc?xsd=xsd3" />
-    <MetadataFile FileName="TownService4.xsd" MetadataType="Schema" ID="00472cd4-cf0a-4a4e-baf3-f957741a3601" SourceId="1" SourceUrl="http://localhost:13866/TownService.svc?xsd=xsd0" />
-    <MetadataFile FileName="TownService.wsdl" MetadataType="Wsdl" ID="4e9ce1dd-bb01-48e5-a75c-a2ef10f097bf" SourceId="1" SourceUrl="http://localhost:13866/TownService.svc?wsdl" />
+    <MetadataFile FileName="TownService.wsdl" MetadataType="Wsdl" ID="b2c2aa50-43e6-40d2-83da-dacbd76f7d00" SourceId="1" SourceUrl="http://localhost:1314/TownService.svc?wsdl" />
+    <MetadataFile FileName="TownService.xsd" MetadataType="Schema" ID="0a2c4634-bf11-40c7-8e28-a4610cc9e8aa" SourceId="1" SourceUrl="http://localhost:1314/TownService.svc?xsd=xsd3" />
+    <MetadataFile FileName="TownService1.xsd" MetadataType="Schema" ID="9b17d011-ffe2-4bd0-8c5b-985b57c95aa3" SourceId="1" SourceUrl="http://localhost:1314/TownService.svc?xsd=xsd2" />
+    <MetadataFile FileName="TownService2.xsd" MetadataType="Schema" ID="be8fb770-6c96-446b-8faf-30945218a49a" SourceId="1" SourceUrl="http://localhost:1314/TownService.svc?xsd=xsd1" />
+    <MetadataFile FileName="TownService3.xsd" MetadataType="Schema" ID="d93e8ac0-0707-4378-bc57-03be07c62fe6" SourceId="1" SourceUrl="http://localhost:1314/TownService.svc?xsd=xsd0" />
+    <MetadataFile FileName="TownService4.xsd" MetadataType="Schema" ID="9231cb74-5085-4b3d-a4af-11985e238736" SourceId="1" SourceUrl="http://localhost:1314/TownService.svc?xsd=xsd4" />
+    <MetadataFile FileName="TownService.disco" MetadataType="Disco" ID="cdc20831-2c30-4a5d-89d9-f4073bd8d7da" SourceId="1" SourceUrl="http://localhost:1314/TownService.svc?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

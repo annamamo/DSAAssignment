@@ -42,6 +42,18 @@ namespace Electros.FaultsServ {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFaultReportLogService/getFaultByID", ReplyAction="http://tempuri.org/IFaultReportLogService/getFaultByIDResponse")]
         Common.FaultReport getFaultByID(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFaultReportLogService/searchLogByDates", ReplyAction="http://tempuri.org/IFaultReportLogService/searchLogByDatesResponse")]
+        Common.FaultLog[] searchLogByDates(System.DateTime dateFrom, System.DateTime dateTo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFaultReportLogService/search", ReplyAction="http://tempuri.org/IFaultReportLogService/searchResponse")]
+        Common.FaultLog[] search(int accountID, int reportID, System.DateTime dateFrom, System.DateTime dateTo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFaultReportLogService/sortByDate", ReplyAction="http://tempuri.org/IFaultReportLogService/sortByDateResponse")]
+        Common.FaultLog[] sortByDate();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFaultReportLogService/getFaultByAccountIDPRoductID", ReplyAction="http://tempuri.org/IFaultReportLogService/getFaultByAccountIDPRoductIDResponse")]
+        Common.FaultReport[] getFaultByAccountIDPRoductID(int accountID, int productID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -105,6 +117,22 @@ namespace Electros.FaultsServ {
         
         public Common.FaultReport getFaultByID(int id) {
             return base.Channel.getFaultByID(id);
+        }
+        
+        public Common.FaultLog[] searchLogByDates(System.DateTime dateFrom, System.DateTime dateTo) {
+            return base.Channel.searchLogByDates(dateFrom, dateTo);
+        }
+        
+        public Common.FaultLog[] search(int accountID, int reportID, System.DateTime dateFrom, System.DateTime dateTo) {
+            return base.Channel.search(accountID, reportID, dateFrom, dateTo);
+        }
+        
+        public Common.FaultLog[] sortByDate() {
+            return base.Channel.sortByDate();
+        }
+        
+        public Common.FaultReport[] getFaultByAccountIDPRoductID(int accountID, int productID) {
+            return base.Channel.getFaultByAccountIDPRoductID(accountID, productID);
         }
     }
 }

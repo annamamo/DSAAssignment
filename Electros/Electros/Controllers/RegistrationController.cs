@@ -27,8 +27,11 @@ namespace Electros.Controllers
         [HttpPost]
         public ActionResult RegisterUser(RegistrationModel rm)
         {
+            
+            //continuation of code
+
             int roleID = 0;
-            if (rm.myAccount.Password.Length < 6)
+            if (rm.Password.Length < 6)
             {
                 TempData["Message"] = "Password needs to be longer";
                 //ViewBag.Msg = "Password needs to be longer";
@@ -37,17 +40,19 @@ namespace Electros.Controllers
             }
             else
             {
-                Account checkAccount = new AccountServ.AccountServiceClient().getAccountByUsername(rm.myAccount.Username);
-                User checkEmail = new UserServ.UserServiceClient().getUserByEmail(rm.myUser.Email);
+                Account checkAccount = new AccountServ.AccountServiceClient().getAccountByUsername(rm.Username);
+                User checkEmail = new UserServ.UserServiceClient().getUserByEmail(rm.Email);
+                int pin = Convert.ToInt32(rm.PIN);
+                Account checkPin = new AccountServ.AccountServiceClient().getAccountByPin(pin);
 
-                if (checkAccount == null && checkEmail == null )
+                if (checkAccount == null && checkEmail == null && checkPin == null)
                 {
 
                     
                         
-                        Account a = new AccountServ.AccountServiceClient().getAccountByUsername(rm.myAccount.Username);
+                        Account a = new AccountServ.AccountServiceClient().getAccountByUsername(rm.Username);
 
-                        string passpin = rm.myAccount.Password + rm.myAccount.PIN;
+                        string passpin = rm.Password + rm.PIN;
                         string token = new AccountServ.AccountServiceClient().Encrypt(passpin);
                         TempData["Token"] = token;
 
@@ -61,8 +66,25 @@ namespace Electros.Controllers
                             }
                         }
                         int[] arraylist = add.ToArray();
-                        new UserServ.UserServiceClient().Create(rm.myUser, arraylist, rm.myAccount);
-                    
+                    //rm.myUser.Email = rm.myUser
+                        //USer
+                        rm.myUser.Name = rm.Name;
+                        rm.myUser.Surname = rm.Surname;
+                        rm.myUser.Email = rm.Email;
+                        rm.myUser.ResidanceName = rm.ResidanceName;
+                        rm.myUser.StreetName = rm.StreetName;
+                        rm.myUser.Mobile = rm.Mobile;
+                        //Account
+                        //rm.myAccount.Username = rm.Username;
+                        //rm.myAccount.Password = rm.Password;
+                        //// rm.myAccount.PIN = Convert.ToInt32(rm.PIN);
+                        //rm.myAccount.PIN = Convert.ToInt32(rm.PIN);
+                        Account acc = new Account();
+                        acc.Username = rm.Username;
+                        acc.Password = rm.Password;
+                        acc.PIN = rm.PIN;
+                        //new UserServ.UserServiceClient().Create(rm.myUser, arraylist, rm.myAccount);
+                        new UserServ.UserServiceClient().Create(rm.myUser, arraylist, acc);
                     
                     
                 }
@@ -74,7 +96,11 @@ namespace Electros.Controllers
                     }
                     else if(checkEmail != null)
                     {
-                        TempData["Message"] = "Email already exists";
+                        TempData["Email"] = "Email already exists";
+                    }
+                    else if(checkPin != null)
+                    {
+                        TempData["PIN"] = "PIN already exists";
                     }
                     
                 }

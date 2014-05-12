@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Security.Principal;
 
 namespace Electros
 {
@@ -40,6 +41,27 @@ namespace Electros
         {
             Session["username"] = "";
             Session["accountid"] = "";
+        }
+
+        protected void Application_AuthenticateRequest(object sender, EventArgs e)
+        {
+            if (Context.User != null)
+            {
+                string name = Context.User.Identity.Name;
+                IEnumerable<Common.Role> userRoles = new RoleServ.RoleServiceClient().GetUserRoles(name).ToList();
+                   
+
+                string[] arrayRoles = new string[userRoles.Count()];
+                int count = 0;
+
+                foreach (Common.Role r in userRoles)
+                {
+                    arrayRoles[count] = r.Name;
+                    count++;
+                }
+                GenericPrincipal gp = new GenericPrincipal(Context.User.Identity, arrayRoles);
+                Context.User = gp;
+            }
         }
     }
 

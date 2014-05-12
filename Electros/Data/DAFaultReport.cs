@@ -36,5 +36,13 @@ namespace Data
         {
             return entities.FaultReport.SingleOrDefault(fr => fr.ID == id);
         }
+        public IEnumerable<FaultReport> getFaultByAccountIDPRoductID(int accountID, int productID)
+        {
+            return entities.FaultReport.Where(fr => fr.AccountID == accountID && fr.ProductID == productID);
+        }
+        //public IEnumerable<FaultReport> getFaultListByID(int id)
+        //{
+        //    return entities.FaultReport.Where(fr => fr.ID == id);
+        //}
     }
 }

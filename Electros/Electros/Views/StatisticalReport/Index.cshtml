@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+ @Ajax.ActionLink("Highly Rated Item", "HighlyRatedItem", new AjaxOptions
+{
+               HttpMethod = "Get",
+               UpdateTargetId = "divDetails",
+               InsertionMode = InsertionMode.Replace
+            })
+<br />
+ @Ajax.ActionLink("Most Purchased Item", "MostPurchasedItem", new AjaxOptions
+{
+               HttpMethod = "Get",
+               UpdateTargetId = "divDetails",
+               InsertionMode = InsertionMode.Replace
+            })
+<br />
+ @Ajax.ActionLink("Product with most faults", "MostFaults", new AjaxOptions
+{
+               HttpMethod = "Get",
+               UpdateTargetId = "divDetails",
+               InsertionMode = InsertionMode.Replace
+            })
+<br />
+ @Ajax.ActionLink("Product with least faults", "LeastFaults", new AjaxOptions
+{
+               HttpMethod = "Get",
+               UpdateTargetId = "divDetails",
+               InsertionMode = InsertionMode.Replace
+            })
+<div id="divDetails">
+</div>

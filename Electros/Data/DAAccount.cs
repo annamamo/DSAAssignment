@@ -34,6 +34,10 @@ namespace Data
                 return true;
             }
         }
+        public Account getAccountByPin(int pin)
+        {
+            return entities.Account.SingleOrDefault(a => a.PIN == pin);
+        }
         
     }
 }

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Basket</h2>
 
 
 <table>
@@ -29,7 +29,10 @@
             @Html.DisplayFor(modelItem => item.Quantity)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Order.DateOfPurchase)
+            @{var date = Convert.ToDateTime(item.Order.DateOfPurchase);}
+            @{var d2 = date.ToShortDateString();}
+           @* @Html.DisplayFor(modelItem => item.Order.DateOfPurchase)*@
+            @Html.DisplayFor(modelItem => d2)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Product.Price)
@@ -49,6 +52,8 @@
 
  @using (Html.BeginForm("Checkout", "Basket", FormMethod.Post))
  {
+     @*@Html.Label("Credit Card No : ")
+    @Html.TextBox("creditcard")*@
      <p>
         <input type="submit" value="Proceed to checkout" />
      </p>

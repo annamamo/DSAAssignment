@@ -29,6 +29,51 @@ namespace Electros.ProductServ {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/Create", ReplyAction="http://tempuri.org/IProductService/CreateResponse")]
         void Create(Common.Comment comment);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/getPurchasesByDates", ReplyAction="http://tempuri.org/IProductService/getPurchasesByDatesResponse")]
+        Common.Order[] getPurchasesByDates(int accountID, System.DateTime dateFrom, System.DateTime dateTo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/searchByCategory", ReplyAction="http://tempuri.org/IProductService/searchByCategoryResponse")]
+        Common.Product[] searchByCategory(string category);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/searchByName", ReplyAction="http://tempuri.org/IProductService/searchByNameResponse")]
+        Common.Product[] searchByName(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/searchByPriceRange", ReplyAction="http://tempuri.org/IProductService/searchByPriceRangeResponse")]
+        Common.Product[] searchByPriceRange(decimal lowPrice, decimal highPrice);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/sortByAscPrice", ReplyAction="http://tempuri.org/IProductService/sortByAscPriceResponse")]
+        Common.Product[] sortByAscPrice();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/sortByDescPrice", ReplyAction="http://tempuri.org/IProductService/sortByDescPriceResponse")]
+        Common.Product[] sortByDescPrice();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/sortByDateListed", ReplyAction="http://tempuri.org/IProductService/sortByDateListedResponse")]
+        Common.Product[] sortByDateListed();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/CreateRating", ReplyAction="http://tempuri.org/IProductService/CreateRatingResponse")]
+        void CreateRating(Common.Rating rating);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/getAverageRating", ReplyAction="http://tempuri.org/IProductService/getAverageRatingResponse")]
+        double getAverageRating(int productID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/getHighlyRatedItem", ReplyAction="http://tempuri.org/IProductService/getHighlyRatedItemResponse")]
+        Common.Rating[] getHighlyRatedItem();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/getMostPurchasedItem", ReplyAction="http://tempuri.org/IProductService/getMostPurchasedItemResponse")]
+        Common.ProductOrder[] getMostPurchasedItem();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/getMostFaults", ReplyAction="http://tempuri.org/IProductService/getMostFaultsResponse")]
+        Common.FaultReport[] getMostFaults();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/getLeastFaults", ReplyAction="http://tempuri.org/IProductService/getLeastFaultsResponse")]
+        Common.FaultReport[] getLeastFaults();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/Update", ReplyAction="http://tempuri.org/IProductService/UpdateResponse")]
+        void Update(Common.Product p);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductService/UpdateProductStock", ReplyAction="http://tempuri.org/IProductService/UpdateProductStockResponse")]
+        void UpdateProductStock(int newStock, int productID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -76,6 +121,66 @@ namespace Electros.ProductServ {
         
         public void Create(Common.Comment comment) {
             base.Channel.Create(comment);
+        }
+        
+        public Common.Order[] getPurchasesByDates(int accountID, System.DateTime dateFrom, System.DateTime dateTo) {
+            return base.Channel.getPurchasesByDates(accountID, dateFrom, dateTo);
+        }
+        
+        public Common.Product[] searchByCategory(string category) {
+            return base.Channel.searchByCategory(category);
+        }
+        
+        public Common.Product[] searchByName(string name) {
+            return base.Channel.searchByName(name);
+        }
+        
+        public Common.Product[] searchByPriceRange(decimal lowPrice, decimal highPrice) {
+            return base.Channel.searchByPriceRange(lowPrice, highPrice);
+        }
+        
+        public Common.Product[] sortByAscPrice() {
+            return base.Channel.sortByAscPrice();
+        }
+        
+        public Common.Product[] sortByDescPrice() {
+            return base.Channel.sortByDescPrice();
+        }
+        
+        public Common.Product[] sortByDateListed() {
+            return base.Channel.sortByDateListed();
+        }
+        
+        public void CreateRating(Common.Rating rating) {
+            base.Channel.CreateRating(rating);
+        }
+        
+        public double getAverageRating(int productID) {
+            return base.Channel.getAverageRating(productID);
+        }
+        
+        public Common.Rating[] getHighlyRatedItem() {
+            return base.Channel.getHighlyRatedItem();
+        }
+        
+        public Common.ProductOrder[] getMostPurchasedItem() {
+            return base.Channel.getMostPurchasedItem();
+        }
+        
+        public Common.FaultReport[] getMostFaults() {
+            return base.Channel.getMostFaults();
+        }
+        
+        public Common.FaultReport[] getLeastFaults() {
+            return base.Channel.getLeastFaults();
+        }
+        
+        public void Update(Common.Product p) {
+            base.Channel.Update(p);
+        }
+        
+        public void UpdateProductStock(int newStock, int productID) {
+            base.Channel.UpdateProductStock(newStock, productID);
         }
     }
 }

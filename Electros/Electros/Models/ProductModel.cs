@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace Electros.Models
 {
@@ -16,13 +17,21 @@ namespace Electros.Models
         public int CategoryID { get; set; }
         public string Image { get; set; }
 
+        public List< ProductOrder> productOrderList { get; set; }
+        public DateTime from { get; set; }
+        public DateTime to { get; set; }
+
         public Product myProduct { get; set; }
 
         public virtual Category myCategory { get; set; }
         public virtual Rating myRating { get; set; }
         public virtual List<Comment> myComment { get; set; }
 
+        [Required(ErrorMessage = "The Quantity is required")]
+        [Range(1, 1000)]
         public int Qty { get; set; }
+
+        public double averageRating { get; set; }
 
         public ProductModel()
         {

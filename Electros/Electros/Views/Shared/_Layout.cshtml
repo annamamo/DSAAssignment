@@ -28,15 +28,54 @@
 		</div>
         
 		<div id="menu" class="container">
-			<ul>
-                <li> @Html.ActionLink("Home", "Index", "Home");</li>
+			@*<ul>*@
+                @*<li> @Html.ActionLink("Home", "Index", "Home");</li>
                 <li> @Html.ActionLink("Products", "ProductList", "Product");</li>
                 <li> @Html.ActionLink("History", "UserHistory", "Basket");</li>
                 <li> @Html.ActionLink("Manage Faults", "Index", "Warranty");</li>
                 <li> @Html.ActionLink("Admin Faults", "Index", "Admin");</li>
-              @* <li> @Html.ActionLink("Register", "RegisterUser", "Registration");</li>*@
-			</ul>
-            
+               <li> @Html.ActionLink("Register", "RegisterUser", "Registration");</li>*@
+			@*</ul>*@
+            @if (Context.User.IsInRole("User") && Context.User.IsInRole("Admin"))
+                {
+                <ul>
+                    
+                    <li> @Html.ActionLink("Home", "Index", "Home");</li>
+                    <li> @Html.ActionLink("Products", "ProductList", "Product");</li>
+                    <li> @Html.ActionLink("History", "UserHistory", "Basket");</li>
+                    <li> @Html.ActionLink("Manage Faults", "Index", "Warranty");</li>
+                    <li> @Html.ActionLink("Admin Faults", "Index", "Admin");</li>
+                   @*<li> @Html.ActionLink("Register", "RegisterUser", "Registration");</li>*@
+                   <li> @Html.ActionLink("Statistical Reports", "Index", "StatisticalReport");</li>
+
+               </ul>
+                }
+                else if (Context.User.IsInRole("Admin"))
+                {
+                   
+                       <li> @Html.ActionLink("Home", "Index", "Home");</li>
+                    <li> @Html.ActionLink("Products", "ProductList", "Product");</li>
+                    <li> @Html.ActionLink("History", "UserHistory", "Basket");</li>
+                    <li> @Html.ActionLink("Manage Faults", "Index", "Warranty");</li>
+                    <li> @Html.ActionLink("Admin Faults", "Index", "Admin");</li>
+                   @*<li> @Html.ActionLink("Register", "RegisterUser", "Registration"); </li>*@
+                <li> @Html.ActionLink("Statistical Reports", "Index", "StatisticalReport");</li>
+                
+                }
+            else if (Context.User.IsInRole("User"))
+            {
+                 
+                       <li> @Html.ActionLink("Home", "Index", "Home");</li>
+                    <li> @Html.ActionLink("Products", "ProductList", "Product");</li>
+                    <li> @Html.ActionLink("History", "UserHistory", "Basket");</li>
+                    <li> @Html.ActionLink("Manage Faults", "Index", "Warranty");</li>
+                    
+                   <li> @Html.ActionLink("Register", "RegisterUser", "Registration");  </li>
+            }
+            else
+            {
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            }
 		</div>
 	</div>
 	<div id="page" class="container">
@@ -66,7 +105,7 @@
 		<div id="content">
             <div class="post">
 				
-               <p>Add content</p>
+               @*<p>Add content</p>*@
                @RenderBody()
             </div>
 			

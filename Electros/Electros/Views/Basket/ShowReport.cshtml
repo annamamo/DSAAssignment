@@ -1,0 +1,89 @@
+﻿@model Electros.Models.ReportModel
+
+@{
+    Layout = null;
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+   @* <title>Electros</title>*@
+    
+</head>
+<body>
+<h2>ELECTROS</h2>
+  @{var d = Convert.ToDateTime(Model.from);}
+             @{var d1 = d.ToShortDateString();}
+                         @Html.DisplayFor(modelItem => d1)
+                    
+                    @{var dd= Convert.ToDateTime(Model.to);}
+             @{var dd1 = d.ToShortDateString();}
+                         @Html.DisplayFor(modelItem => dd1)
+                    
+   @* <p>@TempData["StoreDataTo"]</p>*@
+   <br />
+   <p>Item : </p>
+    <table>
+        <tr>
+            <th>Item ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Date of Purchase</th>
+            <th>Warranty Expiry Date</th>
+        </tr>
+    
+    @*@foreach (var item in Model) {*@
+        <tr>
+           <td>@Html.DisplayFor(modelItem => modelItem.myProduct.ID)</td>
+           <td>@Html.DisplayFor(modelItem => modelItem.myProduct.Name)</td>
+           <td>@Html.DisplayFor(modelItem => modelItem.myProduct.Price)</td>
+           <td>
+            @{var date = Convert.ToDateTime(Model.myOrder.DateOfPurchase);}
+             @{var d2 = date.ToShortDateString();}
+                 @*@Html.DisplayFor(modelItem => modelItem.myOrder.DateOfPurchase)*@
+                 @Html.DisplayFor(modelItem => d2)
+           </td>
+           <td>
+            @{var date2 = Convert.ToDateTime(Model.myOrder.WarrantyExpiryDate);}
+             @{var d21 = date2.ToShortDateString();}
+               @* @Html.DisplayFor(modelItem => modelItem.myOrder.WarrantyExpiryDate)*@
+                @Html.DisplayFor(modelItem => d21)
+           </td>
+           
+        </tr>
+    @*}*@
+    
+    </table>
+    <p>Fault : </p>
+    <table>
+        <tr>
+            <th>Fault ID</th>
+            <th>Date</th>
+            <th>Fault Details</th>
+            <th>Status</th>
+            
+        </tr>
+    
+    @foreach(Common.FaultLog itemFault in Model.myFaultLog) 
+    {
+        Common.FaultLog fl = @itemFault;
+        <tr>
+           <td>@itemFault.FaultReportID</td>
+           
+           <td>
+            @{var date3 = Convert.ToDateTime(itemFault.DateReport);}
+             @{var d3 = date3.ToShortDateString();}
+           @d3
+           </td>
+           <td>@itemFault.Description</td>
+           <td>@itemFault.Status</td>
+           
+           
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

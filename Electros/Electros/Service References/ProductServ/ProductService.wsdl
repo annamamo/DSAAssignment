@@ -2,11 +2,11 @@
 <wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ProductService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://localhost:13866/ProductService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:13866/ProductService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:13866/ProductService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
-      <xsd:import schemaLocation="http://localhost:13866/ProductService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" />
-      <xsd:import schemaLocation="http://localhost:13866/ProductService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+      <xsd:import schemaLocation="http://localhost:1314/ProductService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:1314/ProductService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:1314/ProductService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+      <xsd:import schemaLocation="http://localhost:1314/ProductService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" />
+      <xsd:import schemaLocation="http://localhost:1314/ProductService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IProductService_GetAllProducts_InputMessage">
@@ -39,6 +39,96 @@
   <wsdl:message name="IProductService_Create_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateResponse" />
   </wsdl:message>
+  <wsdl:message name="IProductService_getPurchasesByDates_InputMessage">
+    <wsdl:part name="parameters" element="tns:getPurchasesByDates" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_getPurchasesByDates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getPurchasesByDatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_searchByCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:searchByCategory" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_searchByCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:searchByCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_searchByName_InputMessage">
+    <wsdl:part name="parameters" element="tns:searchByName" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_searchByName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:searchByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_searchByPriceRange_InputMessage">
+    <wsdl:part name="parameters" element="tns:searchByPriceRange" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_searchByPriceRange_OutputMessage">
+    <wsdl:part name="parameters" element="tns:searchByPriceRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_sortByAscPrice_InputMessage">
+    <wsdl:part name="parameters" element="tns:sortByAscPrice" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_sortByAscPrice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sortByAscPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_sortByDescPrice_InputMessage">
+    <wsdl:part name="parameters" element="tns:sortByDescPrice" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_sortByDescPrice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sortByDescPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_sortByDateListed_InputMessage">
+    <wsdl:part name="parameters" element="tns:sortByDateListed" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_sortByDateListed_OutputMessage">
+    <wsdl:part name="parameters" element="tns:sortByDateListedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_CreateRating_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRating" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_CreateRating_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateRatingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_getAverageRating_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAverageRating" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_getAverageRating_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAverageRatingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_getHighlyRatedItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:getHighlyRatedItem" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_getHighlyRatedItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getHighlyRatedItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_getMostPurchasedItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:getMostPurchasedItem" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_getMostPurchasedItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getMostPurchasedItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_getMostFaults_InputMessage">
+    <wsdl:part name="parameters" element="tns:getMostFaults" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_getMostFaults_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getMostFaultsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_getLeastFaults_InputMessage">
+    <wsdl:part name="parameters" element="tns:getLeastFaults" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_getLeastFaults_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getLeastFaultsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_Update_InputMessage">
+    <wsdl:part name="parameters" element="tns:Update" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_Update_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_UpdateProductStock_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProductStock" />
+  </wsdl:message>
+  <wsdl:message name="IProductService_UpdateProductStock_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProductStockResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProductService">
     <wsdl:operation name="GetAllProducts">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/GetAllProducts" message="tns:IProductService_GetAllProducts_InputMessage" />
@@ -59,6 +149,66 @@
     <wsdl:operation name="Create">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductService/Create" message="tns:IProductService_Create_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProductService/CreateResponse" message="tns:IProductService_Create_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getPurchasesByDates">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/getPurchasesByDates" message="tns:IProductService_getPurchasesByDates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/getPurchasesByDatesResponse" message="tns:IProductService_getPurchasesByDates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="searchByCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/searchByCategory" message="tns:IProductService_searchByCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/searchByCategoryResponse" message="tns:IProductService_searchByCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="searchByName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/searchByName" message="tns:IProductService_searchByName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/searchByNameResponse" message="tns:IProductService_searchByName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="searchByPriceRange">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/searchByPriceRange" message="tns:IProductService_searchByPriceRange_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/searchByPriceRangeResponse" message="tns:IProductService_searchByPriceRange_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sortByAscPrice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/sortByAscPrice" message="tns:IProductService_sortByAscPrice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/sortByAscPriceResponse" message="tns:IProductService_sortByAscPrice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sortByDescPrice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/sortByDescPrice" message="tns:IProductService_sortByDescPrice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/sortByDescPriceResponse" message="tns:IProductService_sortByDescPrice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="sortByDateListed">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/sortByDateListed" message="tns:IProductService_sortByDateListed_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/sortByDateListedResponse" message="tns:IProductService_sortByDateListed_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateRating">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/CreateRating" message="tns:IProductService_CreateRating_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/CreateRatingResponse" message="tns:IProductService_CreateRating_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAverageRating">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/getAverageRating" message="tns:IProductService_getAverageRating_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/getAverageRatingResponse" message="tns:IProductService_getAverageRating_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getHighlyRatedItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/getHighlyRatedItem" message="tns:IProductService_getHighlyRatedItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/getHighlyRatedItemResponse" message="tns:IProductService_getHighlyRatedItem_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getMostPurchasedItem">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/getMostPurchasedItem" message="tns:IProductService_getMostPurchasedItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/getMostPurchasedItemResponse" message="tns:IProductService_getMostPurchasedItem_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getMostFaults">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/getMostFaults" message="tns:IProductService_getMostFaults_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/getMostFaultsResponse" message="tns:IProductService_getMostFaults_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getLeastFaults">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/getLeastFaults" message="tns:IProductService_getLeastFaults_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/getLeastFaultsResponse" message="tns:IProductService_getLeastFaults_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/Update" message="tns:IProductService_Update_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/UpdateResponse" message="tns:IProductService_Update_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProductStock">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductService/UpdateProductStock" message="tns:IProductService_UpdateProductStock_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductService/UpdateProductStockResponse" message="tns:IProductService_UpdateProductStock_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IProductService" type="tns:IProductService">
@@ -108,10 +258,145 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getPurchasesByDates">
+      <soap:operation soapAction="http://tempuri.org/IProductService/getPurchasesByDates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchByCategory">
+      <soap:operation soapAction="http://tempuri.org/IProductService/searchByCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchByName">
+      <soap:operation soapAction="http://tempuri.org/IProductService/searchByName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchByPriceRange">
+      <soap:operation soapAction="http://tempuri.org/IProductService/searchByPriceRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sortByAscPrice">
+      <soap:operation soapAction="http://tempuri.org/IProductService/sortByAscPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sortByDescPrice">
+      <soap:operation soapAction="http://tempuri.org/IProductService/sortByDescPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sortByDateListed">
+      <soap:operation soapAction="http://tempuri.org/IProductService/sortByDateListed" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateRating">
+      <soap:operation soapAction="http://tempuri.org/IProductService/CreateRating" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAverageRating">
+      <soap:operation soapAction="http://tempuri.org/IProductService/getAverageRating" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHighlyRatedItem">
+      <soap:operation soapAction="http://tempuri.org/IProductService/getHighlyRatedItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMostPurchasedItem">
+      <soap:operation soapAction="http://tempuri.org/IProductService/getMostPurchasedItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMostFaults">
+      <soap:operation soapAction="http://tempuri.org/IProductService/getMostFaults" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLeastFaults">
+      <soap:operation soapAction="http://tempuri.org/IProductService/getLeastFaults" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap:operation soapAction="http://tempuri.org/IProductService/Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProductStock">
+      <soap:operation soapAction="http://tempuri.org/IProductService/UpdateProductStock" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ProductService">
     <wsdl:port name="BasicHttpBinding_IProductService" binding="tns:BasicHttpBinding_IProductService">
-      <soap:address location="http://localhost:13866/ProductService.svc" />
+      <soap:address location="http://localhost:1314/ProductService.svc" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -2,11 +2,11 @@
 <wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AccountService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://localhost:13866/AccountService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:13866/AccountService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:13866/AccountService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
-      <xsd:import schemaLocation="http://localhost:13866/AccountService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" />
-      <xsd:import schemaLocation="http://localhost:13866/AccountService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
+      <xsd:import schemaLocation="http://localhost:1314/AccountService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:1314/AccountService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:1314/AccountService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Common" />
+      <xsd:import schemaLocation="http://localhost:1314/AccountService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses" />
+      <xsd:import schemaLocation="http://localhost:1314/AccountService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Data" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IAccountService_getAccountByUsername_InputMessage">
@@ -21,11 +21,23 @@
   <wsdl:message name="IAccountService_Encrypt_OutputMessage">
     <wsdl:part name="parameters" element="tns:EncryptResponse" />
   </wsdl:message>
+  <wsdl:message name="IAccountService_Decrypty_InputMessage">
+    <wsdl:part name="parameters" element="tns:Decrypty" />
+  </wsdl:message>
+  <wsdl:message name="IAccountService_Decrypty_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DecryptyResponse" />
+  </wsdl:message>
   <wsdl:message name="IAccountService_isAuthenticatedValid_InputMessage">
     <wsdl:part name="parameters" element="tns:isAuthenticatedValid" />
   </wsdl:message>
   <wsdl:message name="IAccountService_isAuthenticatedValid_OutputMessage">
     <wsdl:part name="parameters" element="tns:isAuthenticatedValidResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAccountService_getAccountByPin_InputMessage">
+    <wsdl:part name="parameters" element="tns:getAccountByPin" />
+  </wsdl:message>
+  <wsdl:message name="IAccountService_getAccountByPin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getAccountByPinResponse" />
   </wsdl:message>
   <wsdl:portType name="IAccountService">
     <wsdl:operation name="getAccountByUsername">
@@ -36,9 +48,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IAccountService/Encrypt" message="tns:IAccountService_Encrypt_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAccountService/EncryptResponse" message="tns:IAccountService_Encrypt_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="Decrypty">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAccountService/Decrypty" message="tns:IAccountService_Decrypty_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAccountService/DecryptyResponse" message="tns:IAccountService_Decrypty_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="isAuthenticatedValid">
       <wsdl:input wsaw:Action="http://tempuri.org/IAccountService/isAuthenticatedValid" message="tns:IAccountService_isAuthenticatedValid_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAccountService/isAuthenticatedValidResponse" message="tns:IAccountService_isAuthenticatedValid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccountByPin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAccountService/getAccountByPin" message="tns:IAccountService_getAccountByPin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAccountService/getAccountByPinResponse" message="tns:IAccountService_getAccountByPin_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IAccountService" type="tns:IAccountService">
@@ -61,8 +81,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Decrypty">
+      <soap:operation soapAction="http://tempuri.org/IAccountService/Decrypty" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="isAuthenticatedValid">
       <soap:operation soapAction="http://tempuri.org/IAccountService/isAuthenticatedValid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccountByPin">
+      <soap:operation soapAction="http://tempuri.org/IAccountService/getAccountByPin" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -73,7 +111,7 @@
   </wsdl:binding>
   <wsdl:service name="AccountService">
     <wsdl:port name="BasicHttpBinding_IAccountService" binding="tns:BasicHttpBinding_IAccountService">
-      <soap:address location="http://localhost:13866/AccountService.svc" />
+      <soap:address location="http://localhost:1314/AccountService.svc" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -21,31 +21,44 @@ namespace Electros.Controllers
         }
         [HttpPost]
         public ActionResult Login(LoginModel data)
-        { 
-            if(new AccountServiceClient().isAuthenticatedValid(data.username,data.pin))
-            {
-                Account checktoken = new AccountServiceClient().getAccountByUsername(data.username);
-                
-                string passpin = checktoken.Password + checktoken.PIN;
-                string token = new AccountServiceClient().Encrypt(passpin);
-                if (token.Equals(data.token))
+        {
+            //try
+            //{
+                if (new AccountServiceClient().isAuthenticatedValid(data.username, data.pin))
                 {
-                    //check with if statement if token is the same with encryption
-                    FormsAuthentication.RedirectFromLoginPage(data.username, true);
-                    Session["username"] = data.username;
-                    Session["accountid"] = checktoken.ID;
-                    return RedirectToAction("Index", "Home");
+                    Account checktoken = new AccountServiceClient().getAccountByUsername(data.username);
+
+                    string passpin = checktoken.Password + checktoken.PIN.ToString();
+                    string token = new AccountServiceClient().Encrypt(passpin);
+                    string decryptedToken = new AccountServiceClient().Decrypty(data.token);
+                    //string checkValue = data
+                    // if (token.Equals(data.token))
+                    if (decryptedToken.Equals(passpin))
+                    {
+                        //check with if statement if token is the same with encryption
+                        FormsAuthentication.RedirectFromLoginPage(data.username, true);
+                        Session["username"] = data.username;
+                        Session["accountid"] = checktoken.ID;
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ViewBag.Error = "Invalid Login credentials";
+                        return View();
+                    }
+
                 }
                 else
                 {
+                    ViewBag.Error = "Invalid Login credentials";
                     return View();
                 }
-
-            }
-            else
-            {
-                return View();
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    ViewBag.Error = "Invalid Login credentials";
+            //}
+            return View();
         }
         //for user to logoff
         public ActionResult LogOff()

@@ -26,21 +26,39 @@ namespace Electros.Models
        // public ICollection<List<Role>> myRole { get; set; }
         public List<CheckBoxes> roles {get; set;}
 
-        ////[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        //[Required]
-        //public string Password { get; set; }
+        public Town myTown { get; set; }
+        
 
-        //[Required]
-        //public int PIN { get; set; }
+        //USer
+        [Required(ErrorMessage = "The Name is required")]
+        public string Name { get; set; }
 
-        //public override ValidationResult Validate(RegisterModel instance)
-        //{
-        //    var result = Validate(instance);
-        //    if (string.IsNullOrEmpty(myUser.Surname))
-        //    {
-        //        result.Errors.Add(new ValidationResult("Username cannot be empty");
-        //    }
-        //}
+        [Required(ErrorMessage = "The Surname is required")]
+        public string Surname { get; set; }
+
+        [Required(ErrorMessage = "The Email is required")]
+        [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "The Residance name is required")]
+        public string ResidanceName { get; set; }
+
+        [Required(ErrorMessage = "The Street name is required")]
+        public string StreetName { get; set; }
+
+        [Required(ErrorMessage = "The mobile is required")]
+        public int Mobile { get; set; }
+
+        //Account
+        [Required(ErrorMessage = "The username is required")]
+        public string Username { get; set; }
+
+        [Required(ErrorMessage = "The password is required")]
+        public string Password { get; set; }
+
+        [Required(ErrorMessage = "The PIN is required")]
+        [RegularExpression(@"^\d{4}$", ErrorMessage = "PIN is not valid")]
+        public int PIN { get; set; }
 
         public class CheckBoxes
         {

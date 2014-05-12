@@ -20,6 +20,9 @@ namespace Electros.RoleServ {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService/GetRoleByID", ReplyAction="http://tempuri.org/IRoleService/GetRoleByIDResponse")]
         Common.Role GetRoleByID(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoleService/GetUserRoles", ReplyAction="http://tempuri.org/IRoleService/GetUserRolesResponse")]
+        Common.Role[] GetUserRoles(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -55,6 +58,10 @@ namespace Electros.RoleServ {
         
         public Common.Role GetRoleByID(int id) {
             return base.Channel.GetRoleByID(id);
+        }
+        
+        public Common.Role[] GetUserRoles(string username) {
+            return base.Channel.GetUserRoles(username);
         }
     }
 }

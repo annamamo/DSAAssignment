@@ -7,8 +7,9 @@
 
 <h2>Details</h2>
 
-
-
+<p style="color:Red">@TempData["OutOfStock"]</p>
+<p style="color:Red">@TempData["ErrorMsg"]</p>
+<p style="color:Red">@TempData["Error"]</p>
 <fieldset>
     <legend>ProductModel</legend>
 
@@ -23,50 +24,59 @@
       @*  @{var data = Model.myProduct.ID;}*@
     </div>
     
-    <div class="display-label">Name</div>
+    <div class="display-label"><b>Name</b></div>
     <div class="display-field">
         @Html.DisplayFor(model => model.myProduct.Name)
     </div>
-
-    <div class="display-label">Features</div>
+    <br />
+    <div class="display-label"><b>Features</b></div>
     <div class="display-field">
         @Html.DisplayFor(model => model.myProduct.Features)
     </div>
-
-    <div class="display-label">StockAmount</div>
+    <br />
+    <div class="display-label"><b>StockAmount</b></div>
     <div class="display-field">
         @Html.DisplayFor(model => model.myProduct.StockAmount)
     </div>
-
-    <div class="display-label">Price</div>
+    <br />
+    <div class="display-label"><b>Price</b></div>
     <div class="display-field">
         @Html.DisplayFor(model => model.myProduct.Price)
     </div>
-
-    <div class="display-label">CategoryID</div>
+    <br />
+    <div class="display-label"><b>Category</b></div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.myProduct.CategoryID)
+        @*@Html.DisplayFor(model => model.myCategory.Name)*@
+        @Html.DisplayFor(model => model.myProduct.Category.Name)
     </div>
-
-    <div class="display-label">Image</div>
+    <br />
+    @*<div class="display-label">Image</div>*@
     <div class="display-field">
       <img src="@Url.Content(String.Format("~/{0}", Model.myProduct.Image))" width="100px" height="100px"/>
-     
+     <br />
     </div>
-    <div class="display-label">Comments</div>
+    <div class="display-label"><b>Comments</b></div>
     <div class="display-field">
     
    @foreach (var i in Model.myComment)
    {
        @Html.DisplayFor(model => i.Comment1) 
+       <br />
    }
     
     </div>
+    <div class="display-label"><b>Average Rating</b></div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.averageRating)
+    </div>
+    <br />
  @using (Html.BeginForm("AddToCart", "Product", FormMethod.Post))
  {
                     @Html.ValidationSummary(true)
-                    <div class="editor-field">
-                        @Html.EditorFor(model => model.Qty)
+                    <div class="display-label"><b>Quantity</b></div>
+                    <div class="field">
+                       @* @Html.EditorFor(model => model.Qty)*@
+                        @Html.TextBoxFor(model => model.Qty)
                         @Html.ValidationMessageFor(model => model.Qty)
 @*
                      @ViewData["QtyAdded"]
@@ -78,6 +88,7 @@
                      <div>
                 @Html.HiddenFor(model => model.myProduct.ID)
                    </div>
+     
  }
 
    @* change later for textbox

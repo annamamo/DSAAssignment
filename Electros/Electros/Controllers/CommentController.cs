@@ -12,16 +12,19 @@ namespace Electros.Controllers
     {
         //
         // GET: /Comment/
-
-        public ActionResult Create()
+        //DO NOT USER
+        public ActionResult Create(int proID)
         {
-            return View(new Models.CommentModel());
+            Product product = new ProductServ.ProductServiceClient().GetProductByID(proID);
+            CommentModel model = new CommentModel();
+            model.myProduct = product;
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult Create(CommentModel cm)
+        public ActionResult Create(CommentModel cm, int proID)
         {
-
+            //DO NOT USE
             //check that user bought the product first
             string username = Session["username"].ToString();
             Account a = new AccountServ.AccountServiceClient().getAccountByUsername(username);
@@ -31,10 +34,18 @@ namespace Electros.Controllers
             //c.ID = new int();
             c.Comment1 = cm.Comment;
             //c.ProductID = Convert.ToInt32(cm.ProductList.SelectedValue);
-            c.ProductID = cm.ProductID;
+            c.ProductID = proID;
             c.AccountID = a.ID;
+
+            Rating r = new Rating();
+            r.Rating1 = cm.rating;
+            r.AccountID = a.ID;
+            r.ProductID = proID;
+
+            new ProductServ.ProductServiceClient().CreateRating(r);
             new ProductServ.ProductServiceClient().Create(c);
-            return RedirectToAction("Create");
+            
+            return RedirectToAction("UserHistory");
         }
 
         

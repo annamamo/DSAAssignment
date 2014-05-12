@@ -21,8 +21,14 @@ namespace Electros.AccountServ {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/Encrypt", ReplyAction="http://tempuri.org/IAccountService/EncryptResponse")]
         string Encrypt(string passpin);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/Decrypty", ReplyAction="http://tempuri.org/IAccountService/DecryptyResponse")]
+        string Decrypty(string passpin);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/isAuthenticatedValid", ReplyAction="http://tempuri.org/IAccountService/isAuthenticatedValidResponse")]
         bool isAuthenticatedValid(string username, int pin);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/getAccountByPin", ReplyAction="http://tempuri.org/IAccountService/getAccountByPinResponse")]
+        Common.Account getAccountByPin(int pin);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -60,8 +66,16 @@ namespace Electros.AccountServ {
             return base.Channel.Encrypt(passpin);
         }
         
+        public string Decrypty(string passpin) {
+            return base.Channel.Decrypty(passpin);
+        }
+        
         public bool isAuthenticatedValid(string username, int pin) {
             return base.Channel.isAuthenticatedValid(username, pin);
+        }
+        
+        public Common.Account getAccountByPin(int pin) {
+            return base.Channel.getAccountByPin(pin);
         }
     }
 }

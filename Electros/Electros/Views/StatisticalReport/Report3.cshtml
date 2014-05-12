@@ -1,0 +1,57 @@
+﻿@model Common.Product
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Most Faults</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Product</legend>
+    
+        <br />
+      <div class="display-label"><b>Category</b></div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Category.Name)
+    </div>
+    <br />
+    
+    <div class="display-label"><b>Name</b></div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+    <br />
+    <div class="display-label"><b>Features</b></div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Features)
+    </div>
+    <br />
+    <div class="display-label"><b>Stock Amount</b></div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.StockAmount)
+    </div>
+    <br />
+    <div class="display-label"><b>Price</b></div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Price)
+    </div>
+    <br />
+    <div class="display-label"><b>Date Listed</b></div>
+    <div class="display-field">
+        @{var date = Convert.ToDateTime(Model.DateListed);}
+        @{var d2 = date.ToShortDateString();}
+           
+        @Html.DisplayFor(model => d2)
+    </div>
+    </fieldset>
+    @*<p>
+        @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@
+</body>
+</html>

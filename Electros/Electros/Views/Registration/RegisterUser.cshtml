@@ -5,67 +5,72 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>RegisterUser</h2>
+<h2>Register</h2>
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 
 @{var message = TempData["Message"];}
+@{var email = TempData["Email"];}
+@{var pin = TempData["PIN"];}
 @{var token = "Your token is"+ TempData["Token"];}
 <p>@token</p>
 <p>@message</p>
+<p>@email</p>
+<p>@pin</p>
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>RegistrationModel</legend>
+    
+        <legend>Registration</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.myUser.Name)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.myUser.Name)
-            @Html.ValidationMessageFor(model => model.myUser.Name)
+        <div class="editor-field" style="color:Red">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.myUser.Surname)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.myUser.Surname)
-            @Html.ValidationMessageFor(model => model.myUser.Surname)
+        <div class="editor-field" style="color:Red">
+            @Html.EditorFor(model => model.Surname)
+            @Html.ValidationMessageFor(model => model.Surname)
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.myUser.Email)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.myUser.Email)
-            @Html.ValidationMessageFor(model => model.myUser.Email)
+        <div class="editor-field" style="color:Red">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.myUser.ResidanceName)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.myUser.ResidanceName)
-            @Html.ValidationMessageFor(model => model.myUser.ResidanceName)
+        <div class="editor-field" style="color:Red">
+            @Html.EditorFor(model => model.ResidanceName)
+            @Html.ValidationMessageFor(model => model.ResidanceName)
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.myUser.StreetName)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.myUser.StreetName)
-            @Html.ValidationMessageFor(model => model.myUser.StreetName)
+        <div class="editor-field" style="color:Red">
+            @Html.EditorFor(model => model.StreetName)
+            @Html.ValidationMessageFor(model => model.StreetName)
             
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.myUser.Mobile)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.myUser.Mobile)
-            @Html.ValidationMessageFor(model => model.myUser.Mobile)
+        <div class="editor-field" style="color:Red">
+            @Html.EditorFor(model => model.Mobile)
+            @Html.ValidationMessageFor(model => model.Mobile)
         </div>
 
         @*<div class="editor-label">
@@ -79,34 +84,42 @@
         <div class="editor-label">
             @Html.LabelFor(model => model.myUser.TownID)
         </div>
-        <div class="editor-field">
+        <div class="editor-field" >
             @Html.DropDownListFor(model => model.myUser.TownID, Model.TownList)
             @Html.ValidationMessageFor(model => model.myUser.TownID)
         </div>
         @*need to show country*@
         <div class="editor-label">
-            @Html.LabelFor(model => model.myAccount.Username)
+            @Html.LabelFor(model => model.myTown.CountryID)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.myAccount.Username)
-            @Html.ValidationMessageFor(model => model.myAccount.Username)
+            @Html.DropDownListFor(model => model.myTown.CountryID, Model.CountryList)
+            @Html.ValidationMessageFor(model => model.myTown.CountryID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.myAccount.Username)
+        </div>
+        <div class="editor-field" style="color:Red">
+            @Html.EditorFor(model => model.Username)
+            @Html.ValidationMessageFor(model => model.Username)
         </div>
 
          <div class="editor-label">
             @Html.LabelFor(model => model.myAccount.Password)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.myAccount.Password)
-            @Html.ValidationMessageFor(model => model.myAccount.Password)
+        <div class="editor-field" style="color:Red">
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
             
         </div>
 
          <div class="editor-label">
             @Html.LabelFor(model => model.myAccount.PIN)
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.myAccount.PIN)
-            @Html.ValidationMessageFor(model => model.myAccount.PIN)
+        <div class="editor-field" style="color:Red">
+            @Html.EditorFor(model => model.PIN)
+            @Html.ValidationMessageFor(model => model.PIN)
         </div>
        @* show checkbox roles*@
         <div class="editor-label">
@@ -127,9 +140,11 @@
         <p>
             <input type="submit" value="Create" />
         </p>
+        
     </fieldset>
+    
 }
 
-<div>
+@*<div>
     @Html.ActionLink("Back to List", "Index")
-</div>
+</div>*@
